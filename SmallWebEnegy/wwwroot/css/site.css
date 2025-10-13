@@ -1,6 +1,6 @@
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 
 html {
@@ -25,7 +25,6 @@ html {
 body {
     margin-bottom: 60px;
 }
-
 
 .navbar {
     background-color: lightgray;
@@ -83,3 +82,29 @@ body {
 .not-found-message {
     font-size: 2rem;
 }
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.CenterGroup {
+    text-align: center;
+    background-color: blue;
+    padding: 2%;
+}
+
+.ImageGrid {
+    width: 40%;
+    justify-self: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 2%;
+}
+
+    .ImageGrid img {
+        border: solid;
+        border-radius: 3%;
+        border-color: gray;
+    }
