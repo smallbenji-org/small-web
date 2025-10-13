@@ -83,3 +83,7 @@ body {
 .not-found-message {
     font-size: 2rem;
 }
+
+.return-home-page {
+    font-family: "Inter", sans-serif;
+}
