@@ -1,6 +1,6 @@
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 
 html {
@@ -25,7 +25,6 @@ html {
 body {
     margin-bottom: 60px;
 }
-
 
 .navbar {
     background-color: lightgray;
@@ -84,6 +83,33 @@ body {
     font-size: 2rem;
 }
 
+
 .return-home-page {
     font-family: "Inter", sans-serif;
 }
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.CenterGroup {
+    text-align: center;
+    padding: 2%;
+}
+
+.ImageGrid {
+    width: 40%;
+    justify-self: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 2%;
+}
+
+    .ImageGrid img {
+        border: solid;
+        border-radius: 3%;
+        border-color: gray;
+    }
+
