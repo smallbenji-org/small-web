@@ -26,6 +26,63 @@ body {
     margin-bottom: 60px;
 }
 
+.navbar {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    padding: 15px;
+}
+
+    .navbar * {
+        text-decoration: none;
+        color: black;
+        font-family: "Inter", sans-serif;
+    }
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    gap: 7vw;
+}
+
+.logo {
+    font-size: 2rem;
+}
+
+    .navbar-pages li a:hover, .logo:hover {
+        color: dimgray;
+    }
+
+.navbar-pages {
+    width: auto;
+    display: flex;
+    width: auto;
+    flex-direction: row;
+    gap: 2vw;
+    font-size: 1.5rem;
+    align-items: center;
+}
+
+    .navbar-pages li {
+        list-style-type: none
+    }
+
+.not-found-title, .not-found-message {
+    font-family: "Inter", sans-serif;
+    justify-self: center;
+}
+.not-found-title {
+    font-size: 4rem;
+}
+
+.not-found-message {
+    font-size: 2rem;
+}
+
 img {
     height: 100%;
     width: 100%;
