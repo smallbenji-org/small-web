@@ -94,12 +94,12 @@ img {
     object-fit: cover;
 }
 
-.CenterGroup {
+.centergroup {
     text-align: center;
     padding: 2%;
 }
 
-.ImageGrid {
+.imagegrid {
     width: 40%;
     justify-self: center;
     display: grid;
@@ -107,9 +107,23 @@ img {
     grid-gap: 2%;
 }
 
-    .ImageGrid img {
+    .imagegrid img {
         border: solid;
-        border-radius: 3%;
         border-color: gray;
-    }
+        border-radius: 3%;
+}
+
+.errorsec {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    border: solid;
+    border-radius: 12px;
+    padding: 1%;
+    width: 60%;
+    text-align: center;
+    box-shadow: 5px 5px 20px 2px;
+    background-color: rgb(255, 179, 179);
+}
 
