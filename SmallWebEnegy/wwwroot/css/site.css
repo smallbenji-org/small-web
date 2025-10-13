@@ -83,6 +83,11 @@ body {
     font-size: 2rem;
 }
 
+
+.return-home-page {
+    font-family: "Inter", sans-serif;
+}
+
 img {
     height: 100%;
     width: 100%;
@@ -107,3 +112,4 @@ img {
         border-radius: 3%;
         border-color: gray;
     }
+
