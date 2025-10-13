@@ -71,3 +71,15 @@ body {
     .navbar-pages li {
         list-style-type: none
     }
+
+.not-found-title, .not-found-message {
+    font-family: "Inter", sans-serif;
+    justify-self: center;
+}
+.not-found-title {
+    font-size: 4rem;
+}
+
+.not-found-message {
+    font-size: 2rem;
+}
