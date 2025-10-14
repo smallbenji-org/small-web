@@ -145,3 +145,31 @@ img {
     background-color: rgb(255, 179, 179);
 }
 
+input {
+    margin-top: 0.4rem;
+    padding: 0.3rem;
+    border: solid;
+    border-radius: 5px;
+    border-color: lightblue;
+    background-color: transparent;
+}
+
+    input:focus {
+        outline: none;
+        border-color: dodgerblue;
+    }
+
+button {
+    margin-top: 0.4rem;
+    padding: 0.3rem;
+    border: solid;
+    border-radius: 5px;
+    border-color: lightblue;
+    background-color: transparent;
+    box-shadow: 2px 1px 1px deepskyblue;
+    transition: 400ms ease-in-out;
+}
+
+    button:hover {
+        transform: scale(1.05);
+    }
