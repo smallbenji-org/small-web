@@ -1,5 +1,6 @@
 # Infra docs
 
+## IP overview
 | Device/service     | IP             |
 |--------------------|----------------|
 | PF sense           | 192.168.69.1   |
