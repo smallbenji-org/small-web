@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.navbar {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    padding: 15px;
+}
+
+    .navbar * {
+        text-decoration: none;
+        color: black;
+        font-family: "Inter", sans-serif;
+    }
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    gap: 7vw;
+}
+
+.logo {
+    font-size: 2rem;
+}
+
+    .navbar-pages li a:hover, .logo:hover {
+        color: dimgray;
+    }
+
+.navbar-pages {
+    width: auto;
+    display: flex;
+    width: auto;
+    flex-direction: row;
+    gap: 2vw;
+    font-size: 1.5rem;
+    align-items: center;
+}
+
+    .navbar-pages li {
+        list-style-type: none
+    }
+
+.not-found-title, .not-found-message {
+    font-family: "Inter", sans-serif;
+    justify-self: center;
+}
+
+.not-found-title {
+    font-size: 4rem;
+}
+
+.not-found-message {
+    font-size: 2rem;
+}
+
+
+.return-home-page {
+    font-family: "Inter", sans-serif;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.centergroup {
+    text-align: center;
+    padding: 2%;
+}
+
+.imagegrid {
+    width: 40%;
+    justify-self: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 2%;
+}
+
+    .imagegrid img {
+        border: solid;
+        border-color: gray;
+        border-radius: 3%;
+    }
+
+.errorsec {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    border: solid;
+    border-radius: 12px;
+    padding: 1%;
+    width: 60vw;
+    text-align: center;
+    box-shadow: 5px 5px 20px 2px;
+    background-color: rgb(255, 179, 179);
+}
