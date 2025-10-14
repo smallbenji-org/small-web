@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AccesPoint
 {
-    internal interface IDbHandler
+    public interface IDbHandler
     {
         public IDataReader ExecuteReader(string query);
         public object ExecuteScalar(string query, object param = null);

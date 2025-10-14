@@ -1,3 +1,5 @@
+using AccesPoint;
+
 namespace SmallEnergy
 {
     public class Program
@@ -8,6 +10,8 @@ namespace SmallEnergy
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddScoped<IDbHandler, PostGres>();
 
             var app = builder.Build();
 
