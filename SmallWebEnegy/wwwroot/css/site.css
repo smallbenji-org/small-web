@@ -27,7 +27,7 @@ body {
 }
 
 .navbar {
-    background-color: lightgray;
+    background-color: deepskyblue;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -104,14 +104,15 @@ img {
     justify-self: center;
     display: grid;
     grid-template-columns: auto auto;
-    grid-gap: 2%;
+    grid-gap: 3%;
 }
 
     .imagegrid img {
         border: solid;
-        border-color: gray;
+        border-color: lightblue;
         border-radius: 3%;
-}
+        box-shadow: 1px 2px 3px deepskyblue;
+    }
 
 .errorsec {
     margin-top: 2%;
