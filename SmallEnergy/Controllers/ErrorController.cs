@@ -5,12 +5,8 @@ namespace SmallEnergy.Controllers
 {
     public class ErrorController : Controller
     {
-        [Route("Home/Error")]
         public IActionResult Index()
         {
-            var exFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
-            Response.StatusCode = 500;
-            throw new NotImplementedException();
             return View("Error");
         }
 
