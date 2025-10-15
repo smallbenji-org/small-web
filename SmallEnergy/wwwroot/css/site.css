@@ -238,9 +238,42 @@ button {
     justify-self: center;
 }
 
-table, th, td {
+td {
     min-width: 5vw;
     width: 100%;
-    border: 1px solid;
+    border-top: 1px solid;
     border-color: lightblue;
+}
+
+table {
+    border: 2px solid;
+    border-color: lightblue;
+    padding: 0.2rem;
+}
+
+.edit {
+    background-color: gray;
+    color: white;
+    width: 100%;
+    border-color: none;
+    box-shadow: none;
+    border: none;
+}
+
+.detail {
+    background-color: dodgerblue;
+    color: white;
+    width: 100%;
+    border-color: none;
+    box-shadow: none;
+    border: none;
+}
+
+.delete {
+    background-color: red;
+    color: white;
+    width: 100%;
+    border-color: none;
+    box-shadow: none;
+    border: none;
 }
