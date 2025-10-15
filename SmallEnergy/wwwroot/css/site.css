@@ -86,6 +86,7 @@ footer * {
     font-family: var(--standard-font-family);
     justify-self: center;
 }
+
 .not-found-title {
     font-size: 4rem;
 }
@@ -127,9 +128,9 @@ img {
         transition: 400ms ease-in-out;
     }
 
-    .imagegrid img:hover {
-        transform: scale(1.1);
-    }
+        .imagegrid img:hover {
+            transform: scale(1.1);
+        }
 
 .errorsec {
     margin-top: 2%;
@@ -176,4 +177,55 @@ button {
 
 .active {
     text-decoration: underline;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+    .hamburger span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: white;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar-pages {
+        margin-top: 3.3rem;
+        position: absolute;
+        right: 1rem;
+        background: #fff;
+        flex-direction: column;
+        gap: 0;
+        border: solid;
+        border-radius: 8px;
+        border-color: lightblue;
+        padding: 1rem;
+    }
+
+        .navbar-pages.show {
+            display: flex;
+        }
+
+    .navbar-pages *{
+        text-decoration: none;
+        color: black;
+        text-align: left;
+        font-family: var(--standard-font-family);
+    }
 }
