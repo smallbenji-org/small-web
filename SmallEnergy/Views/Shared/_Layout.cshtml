@@ -16,13 +16,13 @@
                 <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">SmallEnergy</a>
                 <ul class="navbar-pages">
                     <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="@(ViewData["Title"]?.ToString() == "Home page" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <a class="@(ViewData["Title"]?.ToString() == "Privacy Policy" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
                     <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Login">Sign in</a>
+                        <a class="@(ViewData["Title"]?.ToString() == "Login" ? "active" : "")"  asp-area="" asp-controller="Home" asp-action="Login">Sign in</a>
                     </li>
                 </ul>
             </div>
