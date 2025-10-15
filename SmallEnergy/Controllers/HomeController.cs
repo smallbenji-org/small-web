@@ -19,11 +19,11 @@ namespace SmallEnergy.Controllers
 
         public IActionResult Index()
         {
-            //IDataReader reader = dbHandler.ExecuteReader("SELECT 1");
-            //DataTable tb = new DataTable();
-            //tb.Load(reader);
-            //
-            //int rows = tb.Rows.Count;
+            IDataReader reader = dbHandler.ExecuteReader("SELECT * FROM public.\"vGetAllUsers\" LIMIT 50");
+            DataTable tb = new DataTable();
+            tb.Load(reader);
+
+            int rows = tb.Rows.Count;
 
             return View();
         }
@@ -43,5 +43,6 @@ namespace SmallEnergy.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }
