@@ -206,6 +206,7 @@ button {
     }
 
     .navbar-pages {
+        display: none;
         margin-top: 3.3rem;
         position: absolute;
         right: 1rem;
