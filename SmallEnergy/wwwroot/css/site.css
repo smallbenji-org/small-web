@@ -237,3 +237,10 @@ button {
     width: 40rem;
     justify-self: center;
 }
+
+table, th, td {
+    min-width: 5vw;
+    width: 100%;
+    border: 1px solid;
+    border-color: lightblue;
+}

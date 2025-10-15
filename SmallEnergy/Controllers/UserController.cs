@@ -21,13 +21,13 @@ namespace SmallEnergy.Controllers
 
         public IActionResult ShowAllUsers()
         {
-            IDataReader reader = dbHandler.ExecuteReader("SELECT * FROM public.\"vGetAllUsers\" LIMIT 50");
-            DataTable tb = new DataTable();
-            tb.Load(reader);
-            
-            AllUsers users = new AllUsers();
-
-            int rows = tb.Rows.Count;
+            //IDataReader reader = dbHandler.ExecuteReader("SELECT * FROM public.\"vGetAllUsers\" LIMIT 50");
+            //DataTable tb = new DataTable();
+            //tb.Load(reader);
+            //
+            //AllUsers users = new AllUsers();
+            //
+            //int rows = tb.Rows.Count;
 
             return View();
         }

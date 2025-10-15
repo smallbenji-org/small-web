@@ -24,13 +24,13 @@
 						<a class="@(ViewData["Title"]?.ToString() == "Home page" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
 					</li>
 					<li>
+						<a class="@(ViewData["Title"]?.ToString() == "All Users" ? "active" : "")" asp-area="" asp-controller="User" asp-action="Index">Users</a>
+					</li>
+					<li>
 						<a class="@(ViewData["Title"]?.ToString() == "Privacy Policy" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
 					</li>
 					<li>
 						<a class="@(ViewData["Title"]?.ToString() == "Login" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Login">Sign in</a>
-					</li>
-					<li>
-						<a class="@(ViewData["Title"]?.ToString() == "All Users" ? "active" : "")" asp-area="" asp-controller="User" asp-action="Index">Users</a>
 					</li>
 				</ul>
 			</div>
