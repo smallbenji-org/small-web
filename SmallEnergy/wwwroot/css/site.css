@@ -230,3 +230,10 @@ button {
         font-family: var(--standard-font-family);
     }
 }
+
+.textblock {
+    display: flex;
+    flex-direction: column;
+    width: 40rem;
+    justify-self: center;
+}
