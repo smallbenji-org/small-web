@@ -117,7 +117,7 @@ img {
     justify-self: center;
     display: grid;
     grid-template-columns: auto auto;
-    grid-gap: 3%;
+    grid-gap: 2%;
 }
 
     .imagegrid img {
@@ -129,7 +129,7 @@ img {
     }
 
         .imagegrid img:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
 .errorsec {
