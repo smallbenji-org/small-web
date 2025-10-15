@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Diagnostics;
+﻿using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SmallEnergy.Controllers
 {
     public class ErrorController : Controller
     {
         public IActionResult Index()
-        {
+        {      
             return View("Error");
         }
 
