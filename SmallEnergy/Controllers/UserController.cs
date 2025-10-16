@@ -27,5 +27,10 @@ namespace SmallEnergy.Controllers
             var users = await userData.GetUsers();
             return View(users);
         }
+
+        public IActionResult EditUser()
+        {
+            return View();
+        }
     }
 }

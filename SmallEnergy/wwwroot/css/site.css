@@ -108,8 +108,11 @@ img {
 }
 
 .centergroup {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: var(--standard-font-family);
+    flex-direction: column;
 }
 
 .imagegrid {
