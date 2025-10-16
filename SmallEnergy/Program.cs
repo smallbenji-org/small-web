@@ -14,7 +14,6 @@ namespace SmallEnergy
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            builder.Services.AddScoped<IDbHandler, PostGres>();
             builder.Services.AddScoped<IUserData, UserData>();
             builder.Services.AddScoped<ISqlDataAccess, SqlDataAccess>();
 

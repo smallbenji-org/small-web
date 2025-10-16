@@ -10,21 +10,19 @@ namespace SmallEnergy.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> logger;
-        private readonly IDbHandler dbHandler;
 
-        public HomeController(ILogger<HomeController> logger, IDbHandler dbHandler)
+        public HomeController(ILogger<HomeController> logger)
         {
             this.logger = logger;
-            this.dbHandler = dbHandler;
         }
 
         public IActionResult Index()
         {
-            IDataReader reader = dbHandler.ExecuteReader("SELECT * FROM public.\"vGetAllUsers\" LIMIT 50");
-            DataTable tb = new DataTable();
-            tb.Load(reader);
+            //IDataReader reader = dbHandler.ExecuteReader("SELECT * FROM public.\"vGetAllUsers\" LIMIT 50");
+            //DataTable tb = new DataTable();
+            //tb.Load(reader);
 
-            int rows = tb.Rows.Count;
+            //int rows = tb.Rows.Count;
 
             return View();
         }
