@@ -42,7 +42,9 @@
 | Minio (TEST)       | minio-test   | 192.168.69.151 |
 
 DHCP range 192.168.69.200-255/24
+
 Gateway ip: 192.168.69.1
+
 DNS server: 192.168.69.1
 
 ## Server roles
