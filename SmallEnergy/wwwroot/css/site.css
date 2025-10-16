@@ -1,3 +1,7 @@
+:root {
+    --standard-font-family: "Inter", sans-serif;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -26,19 +30,26 @@ body {
     margin-bottom: 60px;
 }
 
+footer * {
+    user-select: none;
+}
+
 .navbar {
-    background-color: lightgray;
+    user-select: none;
+    background: #5db9de;
+    background: linear-gradient(90deg,rgba(93, 185, 222, 1) 0%, rgba(117, 216, 255, 1) 50%, rgba(72, 181, 224, 1) 100%);
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-content: center;
     padding: 15px;
+    margin-bottom: 1rem;
 }
 
     .navbar * {
         text-decoration: none;
-        color: black;
-        font-family: "Inter", sans-serif;
+        color: white;
+        font-family: var(--standard-font-family);
     }
 
 .container {
@@ -51,10 +62,11 @@ body {
 
 .logo {
     font-size: 2rem;
+    font-weight: 800;
 }
 
     .navbar-pages li a:hover, .logo:hover {
-        color: dimgray;
+        color: darkslateblue;
     }
 
 .navbar-pages {
@@ -72,7 +84,7 @@ body {
     }
 
 .not-found-title, .not-found-message {
-    font-family: "Inter", sans-serif;
+    font-family: var(--standard-font-family);
     justify-self: center;
 }
 
@@ -86,7 +98,7 @@ body {
 
 
 .return-home-page {
-    font-family: "Inter", sans-serif;
+    font-family: var(--standard-font-family);
 }
 
 img {
@@ -97,10 +109,11 @@ img {
 
 .centergroup {
     text-align: center;
-    padding: 2%;
+    font-family: var(--standard-font-family);
 }
 
 .imagegrid {
+    margin-top: 1rem;
     width: 40%;
     justify-self: center;
     display: grid;
@@ -110,9 +123,15 @@ img {
 
     .imagegrid img {
         border: solid;
-        border-color: gray;
+        border-color: lightblue;
         border-radius: 3%;
+        box-shadow: 1px 2px 3px deepskyblue;
+        transition: 400ms ease-in-out;
     }
+
+        .imagegrid img:hover {
+            transform: scale(1.05);
+        }
 
 .errorsec {
     margin-top: 2%;
@@ -127,3 +146,154 @@ img {
     box-shadow: 5px 5px 20px 2px;
     background-color: rgb(255, 179, 179);
 }
+
+input {
+    margin-top: 0.4rem;
+    padding: 0.3rem;
+    border: solid;
+    border-radius: 5px;
+    border-color: lightblue;
+    background-color: transparent;
+}
+
+    input:focus {
+        outline: none;
+        border-color: dodgerblue;
+    }
+
+button {
+    margin-top: 0.4rem;
+    padding: 0.3rem;
+    border: solid;
+    border-radius: 5px;
+    border-color: lightblue;
+    background-color: transparent;
+    box-shadow: 2px 1px 1px deepskyblue;
+    transition: 400ms ease-in-out;
+}
+
+    button:hover {
+        transform: scale(1.05);
+    }
+
+.active {
+    text-decoration: underline;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+    .hamburger span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: white;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar-pages {
+        display: none;
+        margin-top: 3.3rem;
+        position: absolute;
+        right: 1rem;
+        background: #fff;
+        flex-direction: column;
+        gap: 0;
+        border: solid;
+        border-radius: 8px;
+        border-color: lightblue;
+        padding: 1rem;
+    }
+
+        .navbar-pages.show {
+            display: flex;
+        }
+
+    .navbar-pages *{
+        text-decoration: none;
+        color: black;
+        text-align: left;
+        font-family: var(--standard-font-family);
+    }
+}
+
+.textblock {
+    display: flex;
+    flex-direction: column;
+    width: 40rem;
+    justify-self: center;
+}
+
+td {
+    min-width: 5vw;
+    width: 100%;
+    border-top: 1px solid;
+    border-color: lightblue;
+}
+
+table {
+    border: 2px solid;
+    border-color: lightblue;
+    padding: 0.2rem;
+}
+
+.edit {
+    background-color: gray;
+    color: white;
+    width: 100%;
+    border-color: none;
+    box-shadow: none;
+    border: none;
+}
+
+.detail {
+    background-color: dodgerblue;
+    color: white;
+    width: 100%;
+    border-color: none;
+    box-shadow: none;
+    border: none;
+}
+
+.delete {
+    background-color: red;
+    color: white;
+    width: 100%;
+    border-color: none;
+    box-shadow: none;
+    border: none;
+}
+
+.pagination {
+    margin-top: 0.7rem;
+    display: flex;
+    justify-content: left;
+    list-style: none;
+    padding: 0px;
+}
+
+    .pagination li a {
+        display: block;
+        padding: 8px 12px;
+        text-decoration: none;
+        border: 1px solid;
+        border-color: lightblue;
+        color: black;
+        margin: 0 4px;
+        border-radius: 5px;
+    }

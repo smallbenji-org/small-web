@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallEnergy", "SmallEnergy\SmallEnergy.csproj", "{5DE1EF81-8285-4B5E-BDD2-52CB8C477EF7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesPoint", "AccesPoint\AccesPoint.csproj", "{ECE41C55-7048-4B63-9084-B2A328EBC6C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5DE1EF81-8285-4B5E-BDD2-52CB8C477EF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DE1EF81-8285-4B5E-BDD2-52CB8C477EF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DE1EF81-8285-4B5E-BDD2-52CB8C477EF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECE41C55-7048-4B63-9084-B2A328EBC6C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECE41C55-7048-4B63-9084-B2A328EBC6C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECE41C55-7048-4B63-9084-B2A328EBC6C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECE41C55-7048-4B63-9084-B2A328EBC6C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

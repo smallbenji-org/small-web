@@ -1,43 +1,67 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SmallEnergy</title>
-    <link rel="preload" href="~/images/placeholder800x800.svg" as="image" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/SmallEnergy.styles.css" asp-append-version="true" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Marketing website" />
+	<title>@ViewData["Title"] - SmallEnergy</title>
+	<link rel="preload" href="~/images/placeholder800x800.svg" as="image" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/SmallEnergy.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">SmallEnergy</a>
-                <ul class="navbar-pages">
-                    <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+	<header>
+		<nav class="navbar">
+			<div class="container">
+				<a class="logo" asp-area="" asp-controller="Home" asp-action="Index">SmallEnergy</a>
+				<button class="hamburger" id="hamburger" aria-label="Toggle menu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				<ul class="navbar-pages" id="nav-menu">
+					<li>
+						<a class="@(ViewData["Title"]?.ToString() == "Home page" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+					</li>
+					<li>
+						<a class="@(ViewData["Title"]?.ToString() == "All Users" ? "active" : "")" asp-area="" asp-controller="User" asp-action="Index">Users</a>
+					</li>
+					<li>
+						<a class="@(ViewData["Title"]?.ToString() == "Privacy Policy" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+					</li>
+					<li>
+						<a class="@(ViewData["Title"]?.ToString() == "Login" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Login">Sign in</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - SmallEnergy - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+		<script>
+				document.addEventListener("DOMContentLoaded", function () {
+			  const hamburger = document.getElementById("hamburger");
+			  const navMenu = document.getElementById("nav-menu");
+
+			  hamburger.addEventListener("click", () => {
+				hamburger.classList.toggle("active");
+				navMenu.classList.toggle("show");
+			  });
+			});
+		</script>
+	</header>
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+	<footer class="border-top footer text-muted">
+		<div class="container">
+			&copy; 2025 - SmallEnergy - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+		</div>
+	</footer>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
