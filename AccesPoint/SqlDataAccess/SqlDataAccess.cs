@@ -27,7 +27,7 @@ namespace AccesPoint.SqlDataAccess
         public Task<IEnumerable<T>> LoadData<T, U>(string sql, U parameters, string connectionId)
         {
             connectionId = "DefaultConnection";
-            string connectionString = _configuration.GetConnectionString(connectionId);
+            string connectionString = _configuration.GetConnectionString(connectionId) ?? "";
 
             try
             {
