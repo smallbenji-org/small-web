@@ -1,4 +1,7 @@
 using AccesPoint;
+using AccesPoint.Inferfaces;
+using AccesPoint.SqlDataAccess;
+using AccesPoint.Users;
 
 namespace SmallEnergy
 {
@@ -12,6 +15,8 @@ namespace SmallEnergy
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddScoped<IDbHandler, PostGres>();
+            builder.Services.AddScoped<IUserData, UserData>();
+            builder.Services.AddScoped<ISqlDataAccess, SqlDataAccess>();
 
             var app = builder.Build();
 
