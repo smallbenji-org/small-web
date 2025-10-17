@@ -6,11 +6,14 @@
 	<thead>
 		<tr>
 			<th>Id</th>
-			<th>UserName</th>
-			<th>Email</th>
-			<th>PhoneNumber</th>
-			<th>EmailConfirmed</th>
-			<th>ProviderDisplayName</th>
+			<th>User Disabled</th>
+			<th>User Name</th>
+			<th>User Login</th>
+			<th>Last Password Change</th>
+			<th>Last Login Date</th>
+			<th>Create Date</th>
+			<th>Kind</th>
+			<th>Actions</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -18,69 +21,19 @@
 		{
 			<tr>
 				<td>@user.Id</td>
-				<td>@user.UserName</td>
-				<td>@user.Email</td>
-				<td>@user.PhoneNumber</td>
-				<td>@user.EmailConfirmed</td>
-				<td>@user.ProviderDisplayName</td>
+				<td>@user.userDisabled</td>
+				<td>@user.userName</td>
+				<td>@user.userLogin</td>
+				<td>@user.lastPasswordChangeDate</td>
+				<td>@user.lastLoginDate</td>
+				<td>@user.createDate</td>
+				<td>@user.kind</td>
 				<td>
 					<button class="edit">Edit</button>
-				</td>
-				<td>
 					<button class="detail">Details</button>
-				</td>
-				<td>
 					<button class="delete">Delete</button>
 				</td>
 			</tr>
 		}
 	</tbody>
-</table>@* 
-﻿@model SmallEnergy.Models.AllUsers;
-@{
-}
-
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>LastName</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Maria</td>
-        <td>Anders</td>
-        <td>
-            <button class="edit">Edit</button>
-        </td>
-        <td>
-            <button class="detail">Details</button>
-        </td>
-        <td>
-            <button class="delete">Delete</button>
-        </td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>Francisco</td>
-        <td>Chang</td>
-        <td>
-            <button class="edit">Edit</button>
-        </td>
-        <td>
-            <button class="detail">Details</button>
-        </td>
-        <td>
-            <button class="delete">Delete</button>
-        </td>
-    </tr>
 </table>
-<ul class="pagination">
-    <li><a asp-action="index" asp-controller="" asp-route-id="1">&laquo;</a></li>
-
-    <li><a asp-action="index" asp-controller="" asp-route-id="2">2</a></li>
-    <li><a asp-action="index" asp-controller="" asp-route-id="3">3</a></li>
-    <li><a asp-action="index" asp-controller="" asp-route-id="4">4</a></li>
-
-    <li><a asp-action="index" asp-controller="" asp-route-id="999">&raquo;</a></li>
-</ul>

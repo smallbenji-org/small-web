@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.Data.SqlClient;
 
 namespace AccesPoint.SqlDataAccess
 {
@@ -31,7 +32,7 @@ namespace AccesPoint.SqlDataAccess
 
             try
             {
-                using (IDbConnection connection = new NpgsqlConnection(connectionString))
+                using (IDbConnection connection = new SqlConnection(connectionString))
                 {
                     _logger.LogInformation("Executing SQL: {sql}", sql);
                     var data = connection.Query<T>(sql, parameters);

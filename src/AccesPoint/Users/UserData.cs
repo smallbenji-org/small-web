@@ -35,7 +35,7 @@ namespace AccesPoint.Users
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<User>> GetUsers() => _db.LoadData<User, dynamic>("SELECT * FROM public.\"vGetAllUsers\" LIMIT 50", null, "DefaultConnection");
+        public Task<IEnumerable<User>> GetUsers() => _db.LoadData<User, dynamic>("EXEC [dbo].[dspGetAllUmbracoUsers] @Id", new { Id = (int?)null }, "DefaultConnection");
 
         public Task UpdateMember(User user)
         {
