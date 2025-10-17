@@ -24,7 +24,10 @@
 				<td>@user.EmailConfirmed</td>
 				<td>@user.ProviderDisplayName</td>
 				<td>
-					<button class="edit">Edit</button>
+                    <form asp-controller="User" asp-action="EditUser" method="post">
+                        <input type="hidden" name="Id" value="@user.Id" />
+                        <button class="edit">Edit</button>
+                    </form>
 				</td>
 				<td>
 					<button class="detail">Details</button>
@@ -35,8 +38,10 @@
 			</tr>
 		}
 	</tbody>
-</table>@* 
-﻿@model SmallEnergy.Models.AllUsers;
+</table>
+
+
+@* ﻿@model SmallEnergy.Models.AllUsers;
 @{
 }
 
@@ -83,4 +88,4 @@
     <li><a asp-action="index" asp-controller="" asp-route-id="4">4</a></li>
 
     <li><a asp-action="index" asp-controller="" asp-route-id="999">&raquo;</a></li>
-</ul>
+</ul> *@

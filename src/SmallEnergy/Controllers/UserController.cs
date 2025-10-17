@@ -28,7 +28,8 @@ namespace SmallEnergy.Controllers
             return View(users);
         }
 
-        public IActionResult EditUser()
+        [HttpPost]
+        public IActionResult EditUser([FromForm] int Id)
         {
             return View();
         }
