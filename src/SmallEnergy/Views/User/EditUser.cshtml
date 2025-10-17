@@ -4,3 +4,10 @@
 
 
 <h1>Editing user @Model.Id</h1>
+
+<form asp-controller="User" asp-action="SaveUserChanges" method="post">
+    <input type="text" name="Id" value="@Model.Id" placeholder="@Model.Id">
+    <input type="text" name="UserName" value="@Model.UserName" placeholder="@Model.UserName">
+
+    <button type="submit">Save changes</button>
+</form>

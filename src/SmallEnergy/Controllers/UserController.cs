@@ -35,5 +35,12 @@ namespace SmallEnergy.Controllers
             var user = await userData.GetUser(Id);
             return View(user);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveUserChanges([FromForm] User user)
+        {
+            await userData.UpdateMember(user);
+            return View();
+        }
     }
 }
