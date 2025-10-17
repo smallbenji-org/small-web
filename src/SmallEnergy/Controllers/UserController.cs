@@ -30,7 +30,7 @@ namespace SmallEnergy.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditUser([FromForm] string Id)
+        public async Task<IActionResult> EditUser([FromForm] int Id)
         {
             var user = await userData.GetUser(Id);
             return View(user);

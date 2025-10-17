@@ -35,7 +35,7 @@ namespace AccesPoint.SqlDataAccess
                 using (IDbConnection connection = new SqlConnection(connectionString))
                 {
                     _logger.LogInformation("Executing SQL: {sql}", sql);
-                    var data = connection.Query<T>(sql);
+                    var data = connection.Query<T>(sql, parameters);
                     return Task.FromResult(data);
                 }
             }
