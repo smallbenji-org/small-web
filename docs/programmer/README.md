@@ -1,3 +1,4 @@
+*Database opssætning*
 User used for ConnectionString
 
 --Delete ApplcationAccess
@@ -10,4 +11,5 @@ CREATE ROLE ApplicationAccess WITH
 GRANT CONNECT ON DATABASE smallweb TO ApplicationAccess;
 
 GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA public TO ApplicationAccess;
+
 
