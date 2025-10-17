@@ -5,6 +5,7 @@ using AccesPoint.Users;
 using Microsoft.AspNetCore.Mvc;
 using SmallEnergy.Models;
 using System.Data;
+using System.Threading.Tasks;
 
 namespace SmallEnergy.Controllers
 {
@@ -28,8 +29,24 @@ namespace SmallEnergy.Controllers
             return View(users);
         }
 
-        public IActionResult EditUser()
+        [HttpPost]
+        public async Task<IActionResult> EditUser([FromForm] string Id)
         {
+            var user = await userData.GetUser(Id);
+            return View(user);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateMember([FromForm] User user)
+        {
+            await userData.UpdateMember(user);
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteMember([FromForm] int id)
+        {
+            await userData.DeleteMember(id);
             return View();
         }
     }
