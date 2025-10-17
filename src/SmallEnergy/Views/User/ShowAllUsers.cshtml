@@ -3,29 +3,38 @@
 }
 
 <table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>UserName</th>
-            <th>Email</th>
-            <th>PhoneNumber</th>
-            <th>EmailConfirmed</th>
-            <th>ProviderDisplayName</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var user in Model)
-        {
-            <tr>
-                <td>@user.Id</td>
-                <td>@user.UserName</td>
-                <td>@user.Email</td>
-                <td>@user.PhoneNumber</td>
-                <td>@user.EmailConfirmed</td>
-                <td>@user.ProviderDisplayName</td>
-            </tr>
-        }
-    </tbody>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>UserName</th>
+			<th>Email</th>
+			<th>PhoneNumber</th>
+			<th>EmailConfirmed</th>
+			<th>ProviderDisplayName</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var user in Model)
+		{
+			<tr>
+				<td>@user.Id</td>
+				<td>@user.UserName</td>
+				<td>@user.Email</td>
+				<td>@user.PhoneNumber</td>
+				<td>@user.EmailConfirmed</td>
+				<td>@user.ProviderDisplayName</td>
+				<td>
+					<button class="edit">Edit</button>
+				</td>
+				<td>
+					<button class="detail">Details</button>
+				</td>
+				<td>
+					<button class="delete">Delete</button>
+				</td>
+			</tr>
+		}
+	</tbody>
 </table>@* 
 ﻿@model SmallEnergy.Models.AllUsers;
 @{
