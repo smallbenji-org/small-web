@@ -37,9 +37,16 @@ namespace SmallEnergy.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SaveUserChanges([FromForm] User user)
+        public async Task<IActionResult> UpdateMember([FromForm] User user)
         {
             await userData.UpdateMember(user);
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteMember([FromForm] int id)
+        {
+            await userData.DeleteMember(id);
             return View();
         }
     }

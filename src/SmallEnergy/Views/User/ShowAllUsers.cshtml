@@ -32,8 +32,11 @@
 				<td>
 					<button class="detail">Details</button>
 				</td>
-				<td>
-					<button class="delete">Delete</button>
+				<td>					
+                    <form asp-controller="User" asp-action="DeleteMember" method="post">
+                        <input type="hidden" name="Id" value="@user.Id" />
+                        <button class="delete">Delete</button>
+                    </form>
 				</td>
 			</tr>
 		}
