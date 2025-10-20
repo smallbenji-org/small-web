@@ -54,7 +54,7 @@ namespace SmallEnergy.Controllers
         public async Task<IActionResult> CreateMember([FromForm] User user)
         {
             await userData.CreateUser(user);
-            return View("Index");
+            return RedirectToAction("ShowAllUsers");
         }
         public IActionResult CreateUser()
         {
