@@ -15,6 +15,7 @@ namespace SmallEnergy
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddScoped<IUserData, UserData>();
+            builder.Services.AddScoped<ISearch, Search>();
             builder.Services.AddScoped<ISqlDataAccess, SqlDataAccess>();
 
             var app = builder.Build();

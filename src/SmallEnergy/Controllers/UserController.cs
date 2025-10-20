@@ -12,10 +12,12 @@ namespace SmallEnergy.Controllers
     public class UserController : Controller
     {
         private readonly IUserData userData;
+        private readonly ISearch searchData;
 
-        public UserController(IUserData userData)
+        public UserController(IUserData userData, ISearch searchData)
         {
             this.userData = userData;
+            this.searchData = searchData;
         }
 
         public IActionResult Index()
@@ -25,8 +27,9 @@ namespace SmallEnergy.Controllers
 
         public async Task<IActionResult> ShowAllUsers()
         {
+            var searches = searchData.GetPopularSearches(5);
             var users = await userData.GetUsers();
-            return View(users);
+            return View(new {users = users, searches = (List<string>)searches.Result });
         }
 
         [HttpPost]
@@ -67,6 +70,18 @@ namespace SmallEnergy.Controllers
             string sql = "EXEC [dbo].[dspGetUmbracoUser] "+input;
             var user = await userData.GetSingleUser(sql);
             return View("EditUser", user);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Search([FromForm] string input)
+        {
+            var users = await userData.GetUsers();
+            if (input != null) 
+            {
+                users = users.Where(x => x.userName.ToLower().Contains(input.ToLower())).ToList();
+                searchData.AddSearch(input);
+            }         
+            return View("ShowAllUsers", users);
         }
     }
 }
