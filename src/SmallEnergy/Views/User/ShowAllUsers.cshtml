@@ -3,11 +3,11 @@
 }
 
 <form asp-controller="User" asp-action="GetBoxed" method="post">
-	<input type="text" name="input" value="" />
-	<button placeholder="search for username">Safe Search</button>
+	<input type="text" name="input" value="" placeholder="search for username..." />
+	<button>Safe Search</button>
 </form>
 <form asp-controller="User" asp-action="Search" method="post">
-	<input type="text" name="input" list="predefinedSearches" placeholder="search for username" />
+	<input type="text" name="input" list="predefinedSearches" placeholder="search for username..." />
 
 	<datalist id="predefinedSearches">
 		@foreach (string option in Model.searches)
