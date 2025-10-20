@@ -54,11 +54,12 @@ namespace SmallEnergy.Controllers
         public async Task<IActionResult> CreateMember([FromForm] User user)
         {
             await userData.CreateUser(user);
-            return View("ShowAllUsers");
+            return View("Index");
         }
         public IActionResult CreateUser()
         {
-            return View();
+            User user = new User();
+            return View(user);
         }
         [HttpPost]
         public async Task<IActionResult> GetBoxed([FromForm] string input)

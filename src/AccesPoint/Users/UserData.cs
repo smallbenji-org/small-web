@@ -20,10 +20,7 @@ namespace AccesPoint.Users
             this._logger = logger;
         }
 
-        public Task CreateUser(User user)
-        {
-            throw new NotImplementedException();
-        }
+        public Task CreateUser(User user) => _db.SaveData("EXEC [dbo].[dspCreateUmbracoUser] @userName, @userLogin, @userPassword, @userDisabled", user, "DefaultConnection");
 
         public Task DeleteMember(int id)
         {

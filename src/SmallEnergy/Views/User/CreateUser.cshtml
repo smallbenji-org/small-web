@@ -6,8 +6,13 @@
 <h1>Editing user</h1>
 
 <form asp-controller="User" asp-action="CreateMember" method="post">
-    <input type="text" name="Id" value="" placeholder="id">
-    <input type="text" name="UserName" value="" placeholder="username">
+    <input type="text" name="userName" value="@Model.userName" placeholder="userName">
+    <input type="text" name="userLogin" value="@Model.userLogin" placeholder="userLogin">
+    <input type="text" name="userPassword" value="@Model.userPassword" placeholder="userPassword">
+    <select>
+        <option value="@Model.userDisabled" selected>false</option>
+        <option value="@Model.userDisabled">true</option>
+    </select>
 
     <button type="submit">Create</button>
 </form>
