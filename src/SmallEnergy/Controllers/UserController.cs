@@ -60,5 +60,12 @@ namespace SmallEnergy.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> GetBoxed([FromForm] string input)
+        {
+            string sql = "EXEC [dbo].[dspGetUmbracoUser] "+input;
+            var user = await userData.GetSingleUser(sql);
+            return View("EditUser", user);
+        }
     }
 }

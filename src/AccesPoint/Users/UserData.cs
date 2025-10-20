@@ -30,6 +30,8 @@ namespace AccesPoint.Users
             throw new NotImplementedException();
         }
 
+        public Task<User> GetSingleUser(string sql) => _db.LoadData<User, dynamic>(sql, null, "DefaultConnection").ContinueWith(t => t.Result.FirstOrDefault());
+
         public Task<User> GetUser(int id) => _db.LoadData<User, dynamic>("EXEC [dbo].[dspGetUmbracoUser] @Id", new {Id = id}, "DefaultConnection").ContinueWith(t => t.Result.FirstOrDefault());
 
         public Task<IEnumerable<User>> GetUsers() => _db.LoadData<User, dynamic>("EXEC [dbo].[dspGetAllUmbracoUsers]", null, "DefaultConnection");
