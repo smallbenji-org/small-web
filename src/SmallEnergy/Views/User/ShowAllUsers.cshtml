@@ -28,6 +28,7 @@
 				<td>@user.lastLoginDate</td>
 				<td>@user.createDate</td>
 				<td>@user.kind</td>
+
 				<td>
                     <form asp-controller="User" asp-action="EditUser" method="post">
                         <input type="hidden" name="Id" value="@user.Id" />

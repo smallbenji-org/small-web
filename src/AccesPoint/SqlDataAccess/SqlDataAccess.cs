@@ -1,16 +1,17 @@
 ﻿using AccesPoint.Inferfaces;
+using Dapper;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
-using Npgsql;
-using Dapper;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.Data.SqlClient;
 
 namespace AccesPoint.SqlDataAccess
 {
@@ -34,7 +35,6 @@ namespace AccesPoint.SqlDataAccess
             {
                 using (IDbConnection connection = new SqlConnection(connectionString))
                 {
-                    _logger.LogInformation("Executing SQL: {sql}", sql);
                     var data = connection.Query<T>(sql, parameters);
                     return Task.FromResult(data);
                 }
@@ -47,9 +47,24 @@ namespace AccesPoint.SqlDataAccess
 
         }
 
-        public Task SaveData<T>(string sql, T parameters, string connectionId)
+        public async Task SaveData<T>(string sql, T parameters, string connectionId)
         {
-            throw new NotImplementedException();
+            connectionId = "DefaultConnection";
+            string connectionString = _configuration.GetConnectionString(connectionId) ?? "";
+
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(connectionString))
+                {
+                    var data = connection.Query<T>(sql, parameters);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError(ex, "Exepction while executing SQL");
+                throw;
+            }
         }
     }
 }

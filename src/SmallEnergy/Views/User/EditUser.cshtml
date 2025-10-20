@@ -1,13 +1,27 @@
 ﻿@model AccesPoint.Models.User
 @{
+    bool GetDifferentBoolValue(bool currentValue)
+    {
+        return !currentValue;
+    }
+
 }
 
 
 <h1>Editing user @Model.Id</h1>
 
 <form asp-controller="User" asp-action="UpdateMember" method="post">
-    <input type="text" name="Id" value="@Model.Id" placeholder="@Model.Id">
-    <input type="text" name="UserName" value="@Model.userName" placeholder="@Model.userName">
+
+    <select>
+        <option value="@Model.userDisabled" selected>@Model.userDisabled</option>
+        <option value="@Model.userDisabled">@GetDifferentBoolValue(Model.userDisabled)</option>
+    </select>
+    
+
+    <input type="text" value="@Model.userName" placeholder="@Model.userName">
+    <input type="text" value="@Model.userLogin" placeholder="@Model.userLogin">
+    <input type="text" value="@Model.userPassword" placeholder="@Model.userPassword">
+    <input type="text" value="@Model.kind" placeholder="@Model.kind">
 
     <button type="submit">Save changes</button>
 </form>
