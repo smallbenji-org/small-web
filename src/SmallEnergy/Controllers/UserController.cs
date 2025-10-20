@@ -49,5 +49,16 @@ namespace SmallEnergy.Controllers
             await userData.DeleteMember(id);
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateMember([FromForm] User user)
+        {
+            await userData.CreateUser(user);
+            return View("ShowAllUsers");
+        }
+        public IActionResult CreateUser()
+        {
+            return View();
+        }
     }
 }
