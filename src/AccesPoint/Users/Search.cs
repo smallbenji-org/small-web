@@ -24,6 +24,6 @@ namespace AccesPoint.Users
             _db.SaveData("EXEC dbo.dspAddSearch @search", new { search = search }, "DefaultConnection");
         }
 
-        public Task<IEnumerable<string>> GetPopularSearches(int top) => _db.LoadData<string, dynamic>("SELECT TOP 5 search FROM dbo.vPopularSearches ORDER BY count DESC", null, "DefaultConnection");
+        public Task<IEnumerable<string>> GetPopularSearches(int top) => _db.LoadData<string, dynamic>("SELECT TOP(@top) search FROM dbo.vPopularSearches ORDER BY count DESC", new { top = top }, "DefaultConnection");
     }
 }

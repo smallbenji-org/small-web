@@ -76,12 +76,13 @@ namespace SmallEnergy.Controllers
         public async Task<IActionResult> Search([FromForm] string input)
         {
             var users = await userData.GetUsers();
+            var searches = searchData.GetPopularSearches(5);
             if (input != null) 
             {
                 users = users.Where(x => x.userName.ToLower().Contains(input.ToLower())).ToList();
                 searchData.AddSearch(input);
             }
-            return View("ShowAllUsers", new { users = users, searches = new List<string>() });
+            return View("ShowAllUsers", new { users = users, searches = (List<string>)searches.Result });
         }
     }
 }

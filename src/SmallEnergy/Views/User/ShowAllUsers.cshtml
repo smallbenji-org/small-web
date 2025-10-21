@@ -21,49 +21,60 @@
 <form asp-controller="User" asp-action="CreateUser" method="post">
 	<button>Create new user</button>
 </form>
-<table class="table">
-	<thead>
-		<tr>
-			<th>Id <i class="arrow up"></i></th>
-			<th>User Disabled</th>
-			<th>User Name</th>
-			<th>User Login</th>
-			<th>Last Password Change</th>
-			<th>Last Login Date</th>
-			<th>Create Date</th>
-			<th>Kind</th>
-			<th>Actions</th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var user in Model.users)
-		{
+@if (Model.users.Count > 0)
+{
+	<table class="table">
+		<thead>
 			<tr>
-				<td>@user.Id</td>
-				<td>@user.userDisabled</td>
-				<td>@user.userName</td>
-				<td>@user.userLogin</td>
-				<td>@user.lastPasswordChangeDate</td>
-				<td>@user.lastLoginDate</td>
-				<td>@user.createDate</td>
-				<td>@user.kind</td>
-
-				<td>
-                    <form asp-controller="User" asp-action="EditUser" method="post">
-                        <input type="hidden" name="Id" value="@user.Id" />
-                        <button class="edit">Edit</button>
-                    </form>
-				</td>
-				<td>
-					<button class="detail">Details</button>
-				</td>
-				<td>					
-                    <form asp-controller="User" asp-action="DeleteMember" method="post">
-                        <input type="hidden" name="Id" value="@user.Id" />
-                        <button class="delete">Delete</button>
-                    </form>
-				</td>
+				<th>Id <i class="arrow up"></i></th>
+				<th>User Disabled</th>
+				<th>User Name</th>
+				<th>User Login</th>
+				<th>Last Password Change</th>
+				<th>Last Login Date</th>
+				<th>Create Date</th>
+				<th>Kind</th>
+				<th>Actions</th>
 			</tr>
-		}
-	</tbody>
-</table>
+		</thead>
+		<tbody>
+			@foreach (var user in Model.users)
+			{
+				<tr>
+					<td>@user.Id</td>
+					<td>@user.userDisabled</td>
+					<td>@user.userName</td>
+					<td>@user.userLogin</td>
+					<td>@user.lastPasswordChangeDate</td>
+					<td>@user.lastLoginDate</td>
+					<td>@user.createDate</td>
+					<td>@user.kind</td>
+
+					<td>
+						<form asp-controller="User" asp-action="EditUser" method="post">
+							<input type="hidden" name="Id" value="@user.Id" />
+							<button class="edit">Edit</button>
+						</form>
+					</td>
+					<td>
+						<button class="detail">Details</button>
+					</td>
+					<td>
+						<form asp-controller="User" asp-action="DeleteMember" method="post">
+							<input type="hidden" name="Id" value="@user.Id" />
+							<button class="delete">Delete</button>
+						</form>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+else
+{
+	<h1>There is nothing here. Most people search for</h1>
+	if (Model.searches.Count > 0)
+	{
+		<h2>@Model.searches[0]</h2>
+	}
+}
