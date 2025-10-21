@@ -2,7 +2,11 @@
 	ViewData["Title"] = "Analytics";
 }
 
-
-<p>Welcome to the Analytics Panel</p>
-
-<a asp-controller="Analytic" asp-action="ShowAllSearches">Search tracker</a>
+<div class="card">
+	<div class="card-header">
+		Analytics Panel
+	</div>
+	<div class="card-content">
+		<a class="button primary" asp-controller="Analytic" asp-action="ShowAllSearches">View All Users</a>
+	</div>
+</div>
