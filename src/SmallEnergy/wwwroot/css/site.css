@@ -103,11 +103,11 @@ footer * {
     font-family: var(--standard-font-family);
 }
 
-img {
+/* img {
     height: 100%;
     width: 100%;
     object-fit: cover;
-}
+} */
 
 .centergroup {
     display: flex;
@@ -248,37 +248,6 @@ button {
     justify-self: center;
 }
 
-/* td {
-    min-width: 5vw;
-    width: 100%;
-    border-top: 1px solid;
-    border-color: lightblue;
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-td:last-child, th:last-child {
-    border-right: none;
-}
-
-table {
-    border: 2px solid;
-    border-color: lightblue;
-    padding: 0.4rem;
-    border-radius: 5px;
-    font-size: 0.90rem;
-    border-collapse: collapse;
-}
-
-th {
-    width: fit-content;
-    text-align: left;
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-td, th {
-    padding: 0.4rem;
-} */
-
 .edit {
     background-color: gray;
     color: white;
@@ -340,78 +309,4 @@ td, th {
 .down {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
-}
-
-.table-box {
-    display:flex;
-    gap:10px;
-    margin-bottom: 10px;
-    border: 2px solid lightblue;
-    padding: 0.75rem;
-    width: fit-content;
-    /* border-radius: 5px; */
-}
-
-/* .card {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid lightblue;
-    padding: 0.75rem;
-    width: 60vw;
-}
-
-.card form {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.card form select {
-    border: 2px solid lightblue;
-    padding: 0.3rem;
-    box-shadow: 3px 1px 1px deepskyblue;
-    background-color: white;
-    border-radius: 5px;
-} */
-
-.edit-user-box {
-    display: flex;
-    flex-direction: row;
-}
-
-.edit-user-box .left {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.edit-user-box .right {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.edit-user-box .right img {
-    aspect-ratio: 1/1;
-    height: 200px;
-    width: 200px;
-    margin: auto;
-
-    border-radius: 5px;
-    box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
-}
-
-.detail-box {
-    border: 2px solid lightblue;
-}
-
-.detail-box .flex-box {
-    display: flex;
-}
-
-.detail-box img {
-    /* object-fit: cover; */
-    aspect-ratio: 1/1;
 }

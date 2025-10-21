@@ -2,57 +2,55 @@
 @{
     ViewData["Title"] = "Edit User";
 }
-<div class="card">
-<h1>Editing user @Model.Id</h1>
 
 <form asp-controller="User" asp-action="UpdateMember" method="post" enctype="multipart/form-data">
-    <div class="edit-user-box">
-    <div class="left">
-        <input type="hidden" name="Id" value="@Model.Id"/>
-        
-        <div>
-            <label>User Name:</label>
-            <input type="text" name="userName" value="@Model.userName" placeholder="Enter user name" required>
+    <div class="card">
+        <div class="card-header">
+            Editing user @Model.Id
         </div>
-        
-        <div>
-            <label>User Login:</label>
-            <input type="text" name="userLogin" value="@Model.userLogin" placeholder="Enter login" required>
+        <div class="card-content">
+            <div class="card-content-left">
+                <input type="hidden" name="Id" value="@Model.Id"/>
+            
+                <div>
+                    <label>User Name:</label>
+                    <input type="text" class="input" name="userName" value="@Model.userName" placeholder="Enter user name" required>
+                </div>
+                
+                <div>
+                    <label>User Login:</label>
+                    <input type="text" class="input" name="userLogin" value="@Model.userLogin" placeholder="Enter login" required>
+                </div>
+                
+                <div>
+                    <label>User Password:</label>
+                    <input type="text" class="input" name="userPassword" value="@Model.userPassword" placeholder="Enter password" required>
+                </div>
+                
+                <div>
+                    <label>Kind:</label>
+                    <input type="number" class="input" name="kind" value="@Model.kind" placeholder="Enter kind">
+                </div>
+                
+                <div>
+                    <label>User Status:</label>
+                    <select name="userDisabled" class="input">
+                        <option value="false" selected="@(!Model.userDisabled)">Enabled</option>
+                        <option value="true" selected="@Model.userDisabled">Disabled</option>
+                    </select>
+                </div>
+            </div>
+            <div class="card-content-right">
+                <img src="@Url.Action("Avatar", "User", new { id = Model.Id, t = DateTime.Now.Ticks })" 
+                    alt="User Avatar" />
+                <div>
+                    <label>Upload new avatar:</label>
+                    <input type="file" class="input" name="avatarFile" accept="image/*">
+                </div>
+            </div>
         </div>
-        
-        <div>
-            <label>User Password:</label>
-            <input type="text" name="userPassword" value="@Model.userPassword" placeholder="Enter password" required>
-        </div>
-        
-        <div>
-            <label>Kind:</label>
-            <input type="number" name="kind" value="@Model.kind" placeholder="Enter kind">
-        </div>
-        
-        <div>
-            <label>User Status:</label>
-            <select name="userDisabled">
-                <option value="false" selected="@(!Model.userDisabled)">Enabled</option>
-                <option value="true" selected="@Model.userDisabled">Disabled</option>
-            </select>
+        <div class="card-actions">
+            <button class="button success">Save</button>
         </div>
     </div>
-    <div class="right">
-        @* <div> *@
-            @* <p>Current Avatar:</p> *@
-            <img src="@Url.Action("Avatar", "User", new { id = Model.Id, t = DateTime.Now.Ticks })" 
-                alt="User Avatar" />
-        @* </div> *@
-
-        <div>
-            <label>Upload new avatar:</label>
-            <input type="file" name="avatarFile" accept="image/*">
-        </div>
-    </div>
-    </div>
-
-    <button type="submit">Save changes</button>
 </form>
-
-</div>
