@@ -1,3 +1,4 @@
+@import url('./smallcss.css');
 :root {
     --standard-font-family: "Inter", sans-serif;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -166,9 +167,9 @@ input {
         outline: none;
         border-color: dodgerblue;
     }
-
+/* 
 button {
-    /* margin-top: 0.4rem; */
+    margin-top: 0.4rem;
     padding: 0.3rem;
     border: solid;
     border-radius: 5px;
@@ -182,7 +183,7 @@ button {
 
     button:hover {
         transform: scale(1.05);
-    }
+    } */
 
 .active {
     text-decoration: underline;
@@ -247,7 +248,7 @@ button {
     justify-self: center;
 }
 
-td {
+/* td {
     min-width: 5vw;
     width: 100%;
     border-top: 1px solid;
@@ -276,7 +277,7 @@ th {
 
 td, th {
     padding: 0.4rem;
-}
+} */
 
 .edit {
     background-color: gray;
@@ -351,7 +352,7 @@ td, th {
     /* border-radius: 5px; */
 }
 
-.card {
+/* .card {
     display: flex;
     flex-direction: column;
     border: 2px solid lightblue;
@@ -372,7 +373,7 @@ td, th {
     box-shadow: 3px 1px 1px deepskyblue;
     background-color: white;
     border-radius: 5px;
-}
+} */
 
 .edit-user-box {
     display: flex;
@@ -400,4 +401,17 @@ td, th {
 
     border-radius: 5px;
     box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.detail-box {
+    border: 2px solid lightblue;
+}
+
+.detail-box .flex-box {
+    display: flex;
+}
+
+.detail-box img {
+    /* object-fit: cover; */
+    aspect-ratio: 1/1;
 }
