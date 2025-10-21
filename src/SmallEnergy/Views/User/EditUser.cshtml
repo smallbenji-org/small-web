@@ -13,15 +13,15 @@
 <form asp-controller="User" asp-action="UpdateMember" method="post">
 
     <select>
-        <option value="@Model.userDisabled" selected>@Model.userDisabled</option>
-        <option value="@Model.userDisabled">@GetDifferentBoolValue(Model.userDisabled)</option>
+        <option name="userDisabled" value="@Model.userDisabled" selected>@Model.userDisabled</option>
+        <option name="userDisabled" value="@Model.userDisabled">@GetDifferentBoolValue(Model.userDisabled)</option>
     </select>
     
-
-    <input type="text" value="@Model.userName" placeholder="@Model.userName">
-    <input type="text" value="@Model.userLogin" placeholder="@Model.userLogin">
-    <input type="text" value="@Model.userPassword" placeholder="@Model.userPassword">
-    <input type="text" value="@Model.kind" placeholder="@Model.kind">
+    <input type="hidden" name="id" value="@Model.Id"/>
+    <input type="text" name="userName" value="@Model.userName" placeholder="@Model.userName">
+    <input type="text" name="userLogin" value="@Model.userLogin" placeholder="@Model.userLogin">
+    <input type="text" name="userPassword" value="@Model.userPassword" placeholder="@Model.userPassword">
+    <input type="text" name="kind" value="@Model.kind" placeholder="@Model.kind">
 
     <button type="submit">Save changes</button>
 </form>

@@ -40,7 +40,7 @@ namespace SmallEnergy.Controllers
         public async Task<IActionResult> UpdateMember([FromForm] User user)
         {
             await userData.UpdateMember(user);
-            return View();
+            return View("Index");
         }
 
         [HttpPost]
