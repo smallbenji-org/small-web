@@ -36,6 +36,14 @@ footer * {
     user-select: none;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: inherit;
+}
+
 .navbar {
     user-select: none;
     background: #5db9de;
@@ -67,9 +75,9 @@ footer * {
     font-weight: 800;
 }
 
-    .navbar-pages li a:hover, .logo:hover {
+    /* .navbar-pages li a:hover, .logo:hover {
         color: darkslateblue;
-    }
+    } */
 
 .navbar-pages {
     width: auto;

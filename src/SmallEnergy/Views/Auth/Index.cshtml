@@ -3,10 +3,33 @@
 }
 
 <form asp-controller="Auth" asp-action="Login" method="post">
-	<section class="centergroup">
+	<div class="card">
+		<div class="card-header">
+			Login
+		</div>
+		<div class="card-content">
+			<div class="card-content-form">
+				<div>
+					<label for="username">Username</label>
+					<input type="text" name="username" class="input" />
+				</div>
+				<div>
+					<label for="password">Password</label>
+					<input type="password" name="password" class="input" />
+				</div>
+			</div>
+		</div>
+		<div class="card-actions">
+			<button type="submit" class="button success">Login</button>
+		</div>
+	</div>
+
+
+
+	@* <section class="centergroup">
 		<h1 class="display-4">Please sign in</h1>
 		<input name="username" type="text" placeholder="Username" />
 		<input name="password" type="password" placeholder="Password" />
 	</section>
-	<button>Sign in</button>
+	<button>Sign in</button> *@
 </form>
