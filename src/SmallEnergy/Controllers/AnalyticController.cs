@@ -1,4 +1,5 @@
 ﻿using AccesPoint.Inferfaces;
+using AccesPoint.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace SmallEnergy.Controllers
@@ -18,8 +19,15 @@ namespace SmallEnergy.Controllers
 
         public async Task<IActionResult> ShowAllSearches()
         {
-           var searches = searchData.GetPopularSearchesByDate(100, new DateTime(2000, 1, 1, 12, 0, 0, DateTimeKind.Utc), DateTime.Now.AddDays(1));
-            return View(new { searches = (List<(string, int)>)searches.Result });
+           var searches = await searchData.GetPopularSearchesByDate(100, new DateTime(2000, 1, 1, 12, 0, 0, DateTimeKind.Utc), DateTime.Now.AddDays(1));
+            return View(new { searches = (List<(string, int)>)searches });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> FilterDate([FromForm] DateTime fromDate, DateTime toDate)
+        {
+            var searches = await searchData.GetPopularSearchesByDate(100, fromDate, toDate);
+            return View("ShowAllSearches", new { searches = (List<(string, int)>)searches });
         }
     }
 }
