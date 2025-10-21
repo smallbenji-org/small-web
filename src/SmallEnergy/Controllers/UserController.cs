@@ -80,8 +80,8 @@ namespace SmallEnergy.Controllers
             {
                 users = users.Where(x => x.userName.ToLower().Contains(input.ToLower())).ToList();
                 searchData.AddSearch(input);
-            }         
-            return View("ShowAllUsers", users);
+            }
+            return View("ShowAllUsers", new { users = users, searches = new List<string>() });
         }
     }
 }
