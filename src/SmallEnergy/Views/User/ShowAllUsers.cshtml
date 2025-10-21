@@ -2,7 +2,7 @@
 @{
 	ViewData["Title"] = "All Users";
 }
-
+<div class="table-box">
 <form asp-controller="User" asp-action="GetBoxed" method="post">
 	<input type="text" name="input" value="" placeholder="search for username..." />
 	<button>Safe Search</button>
@@ -22,6 +22,9 @@
 <form asp-controller="User" asp-action="CreateUser" method="post">
 	<button>Create new user</button>
 </form>
+</div>
+
+
 @if (Model.users.Count > 0)
 {
 	<table class="table">
@@ -35,7 +38,7 @@
 				<th>Last Login Date</th>
 				<th>Create Date</th>
 				<th>Kind</th>
-				<th>Actions</th>
+				<th colspan="3">Actions</th>
 			</tr>
 		</thead>
 		<tbody>
