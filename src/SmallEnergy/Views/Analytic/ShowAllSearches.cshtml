@@ -1,0 +1,22 @@
+﻿@model dynamic
+@{
+	ViewData["Title"] = "Analytics";
+}
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Searched for</th>
+			<th>Interactions <i class="arrow up"></i></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var pair in Model.searches)
+		{
+			<tr>
+				<td>@pair.Item1</td>
+				<td>@pair.Item2</td>
+			</tr>
+		}		
+	</tbody>
+</table>
