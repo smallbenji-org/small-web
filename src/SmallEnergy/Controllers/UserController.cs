@@ -2,6 +2,7 @@
 using AccesPoint.Inferfaces;
 using AccesPoint.Models;
 using AccesPoint.Users;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmallEnergy.Models;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace SmallEnergy.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private readonly IUserData userData;

@@ -1,7 +1,9 @@
-using AccesPoint;
+using AccesPoint.Models;
 using AccesPoint.Inferfaces;
 using AccesPoint.SqlDataAccess;
 using AccesPoint.Users;
+using Microsoft.AspNetCore.Identity;
+using SmallEnergy.Auth;
 
 namespace SmallEnergy
 {
@@ -17,6 +19,16 @@ namespace SmallEnergy
             builder.Services.AddScoped<IUserData, UserData>();
             builder.Services.AddScoped<ISearch, Search>();
             builder.Services.AddScoped<ISqlDataAccess, SqlDataAccess>();
+
+            builder.Services.AddIdentity<User, UserRole>()
+                 .AddUserStore<UserStore>()
+                 .AddRoleStore<RoleStore>()
+                 .AddDefaultTokenProviders();
+
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Auth";
+            });
 
             var app = builder.Build();
 

@@ -1,9 +1,11 @@
 ﻿using AccesPoint.Inferfaces;
 using AccesPoint.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace SmallEnergy.Controllers
 {
+    [Authorize]
     public class AnalyticController : Controller
     {
         private readonly ISearch searchData;
