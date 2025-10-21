@@ -5,9 +5,9 @@
 
 <form asp-controller="Analytic" asp-action="FilterDate" method="post">
 	<p>fromDate</p>
-	<input type="date" name="fromDate" value="2000-01-01 12:00:00" />
+	<input type="datetime" name="fromDate" value="2000-01-01 12:00:00" />
 	<p>toDate</p>
-	<input type="date" name="toDate" value="@DateTime.Now.AddDays(1)" />
+	<input type="datetime" name="toDate" value="@DateTime.Now.AddDays(1)" />
 	<button>Filter</button>
 </form>
 <table class="table">
