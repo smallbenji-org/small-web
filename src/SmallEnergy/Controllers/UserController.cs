@@ -27,9 +27,9 @@ namespace SmallEnergy.Controllers
 
         public async Task<IActionResult> ShowAllUsers()
         {
-            var searches = searchData.GetPopularSearches(5);
+            var searches = await searchData.GetPopularSearches(5);
             var users = await userData.GetUsers();
-            return View(new {users = users, searches = (List<string>)searches.Result });
+            return View(new {users = users, searches = (List<string>)searches });
         }
 
         [HttpPost]
@@ -76,13 +76,13 @@ namespace SmallEnergy.Controllers
         public async Task<IActionResult> Search([FromForm] string input)
         {
             var users = await userData.GetUsers();
-            var searches = searchData.GetPopularSearches(5);
+            var searches = await searchData.GetPopularSearches(5);
             if (input != null) 
             {
                 users = users.Where(x => x.userName.ToLower().Contains(input.ToLower())).ToList();
                 searchData.AddSearch(input);
             }
-            return View("ShowAllUsers", new { users = users, searches = (List<string>)searches.Result });
+            return View("ShowAllUsers", new { users = users, searches = (List<string>)searches });
         }
     }
 }
