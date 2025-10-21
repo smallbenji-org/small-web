@@ -28,6 +28,12 @@ html {
     min-height: 100%;
 }
 
+.imagegrid img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
 body {
     margin-bottom: 60px;
 }
