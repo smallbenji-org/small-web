@@ -27,6 +27,12 @@ namespace SmallEnergy.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Details(int id)
+        {
+            var user = await userData.GetUser(id);
+            return View(user);
+        }
+
         public async Task<IActionResult> ShowAllUsers()
         {
             var searches = await searchData.GetPopularSearches(5);
@@ -34,16 +40,67 @@ namespace SmallEnergy.Controllers
             return View(new {users = users, searches = (List<string>)searches });
         }
 
-        [HttpPost]
-        public async Task<IActionResult> EditUser([FromForm] int Id)
+        public IActionResult EditUser(int id)
         {
-            var user = await userData.GetUser(Id);
+            var user = userData.GetUser(id).Result;
             return View(user);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> UpdateMember([FromForm] User user)
+        public async Task<IActionResult> Avatar(int id)
         {
+            var user = await userData.GetUser(id);
+            if (user?.avatarBinary == null || user.avatarBinary.Length == 0)
+                return File("~/images/default-avatar.png", "image/png");
+
+            string contentType = "image/jpeg"; 
+            
+            // Check for PNG signature (89 50 4E 47)
+            if (user.avatarBinary.Length > 4 && 
+                user.avatarBinary[0] == 0x89 && 
+                user.avatarBinary[1] == 0x50 && 
+                user.avatarBinary[2] == 0x4E && 
+                user.avatarBinary[3] == 0x47)
+            {
+                contentType = "image/png";
+            }
+            // Check for JPEG signature (FF D8 FF)
+            else if (user.avatarBinary.Length > 3 && 
+                     user.avatarBinary[0] == 0xFF && 
+                     user.avatarBinary[1] == 0xD8 && 
+                     user.avatarBinary[2] == 0xFF)
+            {
+                contentType = "image/jpeg";
+            }
+            // Check for GIF signature (47 49 46)
+            else if (user.avatarBinary.Length > 3 && 
+                     user.avatarBinary[0] == 0x47 && 
+                     user.avatarBinary[1] == 0x49 && 
+                     user.avatarBinary[2] == 0x46)
+            {
+                contentType = "image/gif";
+            }
+
+            return File(user.avatarBinary, contentType);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateMember([FromForm] User user, IFormFile avatarFile)
+        {
+            if (avatarFile != null && avatarFile.Length > 0)
+            {
+                using var ms = new MemoryStream();
+                await avatarFile.CopyToAsync(ms);
+                user.avatarBinary = ms.ToArray();
+            }
+            else
+            {
+                var existingUser = await userData.GetUser(user.Id);
+                if (existingUser?.avatarBinary != null)
+                {
+                    user.avatarBinary = existingUser.avatarBinary;
+                }
+            }
+
             await userData.UpdateMember(user);
             return View("Index");
         }
@@ -66,6 +123,7 @@ namespace SmallEnergy.Controllers
             User user = new User();
             return View(user);
         }
+
         [HttpPost]
         public async Task<IActionResult> GetBoxed([FromForm] string input)
         {

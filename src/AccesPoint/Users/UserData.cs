@@ -30,6 +30,6 @@ namespace AccesPoint.Users
 
         public Task<IEnumerable<User>> GetUsers() => _db.LoadData<User, dynamic>("EXEC [dbo].[dspGetAllUmbracoUsers]", null, "DefaultConnection");
 
-        public Task UpdateMember(User user) => _db.SaveData("EXEC [dbo].[dspUpdateUmbracoUser] @id, @userDisabled, @userName, @userLogin, @userPassword, @kind", user, "DefaultConnection");
+        public Task UpdateMember(User user) => _db.SaveData("EXEC [dbo].[dspUpdateUmbracoUser] @id, @userDisabled, @userName, @userLogin, @userPassword, @kind, @avatarBinary", user, "DefaultConnection");
     }
 }

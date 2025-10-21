@@ -360,8 +360,44 @@ td, th {
 }
 
 .card form {
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
+}
 
+.card form select {
+    border: 2px solid lightblue;
+    padding: 0.3rem;
+    box-shadow: 3px 1px 1px deepskyblue;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.edit-user-box {
+    display: flex;
+    flex-direction: row;
+}
+
+.edit-user-box .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.edit-user-box .right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.edit-user-box .right img {
+    aspect-ratio: 1/1;
+    height: 200px;
+    width: 200px;
+    margin: auto;
+
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
 }

@@ -54,31 +54,26 @@
 					<td>@user.createDate</td>
 					<td>@user.kind</td>
 
-					<td>
-						<form asp-controller="User" asp-action="EditUser" method="post">
-							<input type="hidden" name="Id" value="@user.Id" />
-							<button class="edit">Edit</button>
-						</form>
-					</td>
-					<td>
+				<td>
+                    <form asp-controller="User" asp-action="EditUser">
+                        <input type="hidden" name="Id" value="@user.Id" />
+                        <button class="edit">Edit</button>
+                    </form>
+				</td>
+				<td>
+					<form asp-controller="User" asp-action="Details" asp-route-id="@user.Id">
+						<input type="hidden" name="Id" value="@user.Id" />
 						<button class="detail">Details</button>
-					</td>
-					<td>
-						<form asp-controller="User" asp-action="DeleteMember" method="post">
-							<input type="hidden" name="Id" value="@user.Id" />
-							<button class="delete">Delete</button>
-						</form>
-					</td>
-				</tr>
-			}
-		</tbody>
-	</table>
-}
-else
-{
-	<h1>There is nothing here. Most people search for</h1>
-	if (Model.searches.Count > 0)
-	{
-		<h2>@Model.searches[0]</h2>
-	}
+					</form>
+				</td>
+				<td>					
+                    <form asp-controller="User" asp-action="DeleteMember" method="post">
+                        <input type="hidden" name="Id" value="@user.Id" />
+                        <button class="delete">Delete</button>
+                    </form>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
 }

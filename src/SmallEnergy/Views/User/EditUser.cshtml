@@ -1,31 +1,58 @@
 ﻿@model AccesPoint.Models.User
 @{
-    bool GetDifferentBoolValue(bool currentValue)
-    {
-        return !currentValue;
-    }
-    ViewData["Title"] = "All Users";
+    ViewData["Title"] = "Edit User";
 }
-
-
+<div class="card">
 <h1>Editing user @Model.Id</h1>
 
-<form asp-controller="User" asp-action="UpdateMember" method="post">
+<form asp-controller="User" asp-action="UpdateMember" method="post" enctype="multipart/form-data">
+    <div class="edit-user-box">
+    <div class="left">
+        <input type="hidden" name="Id" value="@Model.Id"/>
+        
+        <div>
+            <label>User Name:</label>
+            <input type="text" name="userName" value="@Model.userName" placeholder="Enter user name" required>
+        </div>
+        
+        <div>
+            <label>User Login:</label>
+            <input type="text" name="userLogin" value="@Model.userLogin" placeholder="Enter login" required>
+        </div>
+        
+        <div>
+            <label>User Password:</label>
+            <input type="text" name="userPassword" value="@Model.userPassword" placeholder="Enter password" required>
+        </div>
+        
+        <div>
+            <label>Kind:</label>
+            <input type="number" name="kind" value="@Model.kind" placeholder="Enter kind">
+        </div>
+        
+        <div>
+            <label>User Status:</label>
+            <select name="userDisabled">
+                <option value="false" selected="@(!Model.userDisabled)">Enabled</option>
+                <option value="true" selected="@Model.userDisabled">Disabled</option>
+            </select>
+        </div>
+    </div>
+    <div class="right">
+        @* <div> *@
+            @* <p>Current Avatar:</p> *@
+            <img src="@Url.Action("Avatar", "User", new { id = Model.Id, t = DateTime.Now.Ticks })" 
+                alt="User Avatar" />
+        @* </div> *@
 
-    <select>
-        <option name="userDisabled" value="@Model.userDisabled" selected>@Model.userDisabled</option>
-        <option name="userDisabled" value="@Model.userDisabled">@GetDifferentBoolValue(Model.userDisabled)</option>
-    </select>
-    
-    <input type="hidden" name="id" value="@Model.Id"/>
-    <label>Username</label>
-    <input type="text" name="userName" value="@Model.userName" placeholder="@Model.userName">
-    <label>UserLogin</label>
-    <input type="text" name="userLogin" value="@Model.userLogin" placeholder="@Model.userLogin">
-    <label>Password</label>
-    <input type="text" name="userPassword" value="@Model.userPassword" placeholder="@Model.userPassword">
-    <label>Kind</label>
-    <input type="text" name="kind" value="@Model.kind" placeholder="@Model.kind">
+        <div>
+            <label>Upload new avatar:</label>
+            <input type="file" name="avatarFile" accept="image/*">
+        </div>
+    </div>
+    </div>
 
     <button type="submit">Save changes</button>
 </form>
+
+</div>

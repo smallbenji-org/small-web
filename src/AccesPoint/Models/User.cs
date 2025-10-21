@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 using System.Linq;
+using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +19,9 @@ namespace AccesPoint.Models
         public string userPassword { get; set; }
         public DateTime lastPasswordChangeDate { get; set; }
         public DateTime lastLoginDate { get; set; }
-        public DateTime createDate {get; set; }
+        public DateTime createDate { get; set; }
         public int kind { get; set; }
+        public byte[] avatarBinary { get; set; }
+
     }
 }
