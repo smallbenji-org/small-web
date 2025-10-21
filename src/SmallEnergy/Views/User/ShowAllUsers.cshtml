@@ -49,13 +49,16 @@
 				<td>@user.kind</td>
 
 				<td>
-                    <form asp-controller="User" asp-action="EditUser" method="post">
+                    <form asp-controller="User" asp-action="EditUser">
                         <input type="hidden" name="Id" value="@user.Id" />
                         <button class="edit">Edit</button>
                     </form>
 				</td>
 				<td>
-					<button class="detail">Details</button>
+					<form asp-controller="User" asp-action="Details" asp-route-id="@user.Id">
+						<input type="hidden" name="Id" value="@user.Id" />
+						<button class="detail">Details</button>
+					</form>
 				</td>
 				<td>					
                     <form asp-controller="User" asp-action="DeleteMember" method="post">
