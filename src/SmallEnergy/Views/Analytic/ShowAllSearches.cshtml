@@ -1,0 +1,29 @@
+﻿@model dynamic
+@{
+	ViewData["Title"] = "Analytics";
+}
+
+<form asp-controller="Analytic" asp-action="FilterDate" method="post">
+	<p>fromDate</p>
+	<input type="datetime" name="fromDate" value="2000-01-01 12:00:00" />
+	<p>toDate</p>
+	<input type="datetime" name="toDate" value="@DateTime.Now.AddDays(1)" />
+	<button>Filter</button>
+</form>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Searched for</th>
+			<th>Interactions <i class="arrow up"></i></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var pair in Model.searches)
+		{
+			<tr>
+				<td>@pair.Item1</td>
+				<td>@pair.Item2</td>
+			</tr>
+		}		
+	</tbody>
+</table>

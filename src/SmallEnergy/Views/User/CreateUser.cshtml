@@ -1,34 +1,20 @@
 ﻿@model AccesPoint.Models.User
 @{
-    ViewData["Title"] = "Create User";
+    ViewData["Title"] = "All Users";
 }
 
-<h1>Create New User</h1>
+<div class="card">
+    <h1>Editing user</h1>
 
-<form asp-controller="User" asp-action="CreateMember" method="post">
-    
-    <div>
-        <label>User Name:</label>
-        <input type="text" name="userName" value="@Model.userName" placeholder="Enter user name" required>
-    </div>
-    
-    <div>
-        <label>User Login:</label>
-        <input type="text" name="userLogin" value="@Model.userLogin" placeholder="Enter login" required>
-    </div>
-    
-    <div>
-        <label>User Password:</label>
-        <input type="text" name="userPassword" value="@Model.userPassword" placeholder="Enter password" required>
-    </div>
-    
-    <div>
-        <label>User Status:</label>
-        <select name="userDisabled">
-            <option value="false" selected>Enabled</option>
-            <option value="true">Disabled</option>
+    <form asp-controller="User" asp-action="CreateMember" method="post">
+        <input type="text" name="userName" value="@Model.userName" placeholder="userName">
+        <input type="text" name="userLogin" value="@Model.userLogin" placeholder="userLogin">
+        <input type="text" name="userPassword" value="@Model.userPassword" placeholder="userPassword">
+        <select>
+            <option value="@Model.userDisabled" selected>false</option>
+            <option value="@Model.userDisabled">true</option>
         </select>
-    </div>
 
-    <button type="submit">Create</button>
-</form>
+        <button type="submit">Create</button>
+    </form>
+</div>

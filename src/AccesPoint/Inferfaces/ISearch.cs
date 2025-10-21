@@ -10,5 +10,6 @@ namespace AccesPoint.Inferfaces
     {
         void AddSearch(string search);
         Task<IEnumerable<string>> GetPopularSearches(int top);
+        Task<IEnumerable<(string, int)>> GetPopularSearchesByDate(int top, DateTime fromDate, DateTime toDate);
     }
 }

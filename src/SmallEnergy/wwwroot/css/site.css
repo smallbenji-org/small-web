@@ -1,5 +1,6 @@
 :root {
     --standard-font-family: "Inter", sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 * {
@@ -151,12 +152,14 @@ img {
 }
 
 input {
-    margin-top: 0.4rem;
+    /* margin-top: 0.4rem; */
     padding: 0.3rem;
     border: solid;
     border-radius: 5px;
     border-color: lightblue;
     background-color: transparent;
+    box-shadow: 2px 1px 1px deepskyblue;
+
 }
 
     input:focus {
@@ -165,7 +168,7 @@ input {
     }
 
 button {
-    margin-top: 0.4rem;
+    /* margin-top: 0.4rem; */
     padding: 0.3rem;
     border: solid;
     border-radius: 5px;
@@ -173,6 +176,8 @@ button {
     background-color: transparent;
     box-shadow: 2px 1px 1px deepskyblue;
     transition: 400ms ease-in-out;
+
+    font-weight: 600;
 }
 
     button:hover {
@@ -247,12 +252,30 @@ td {
     width: 100%;
     border-top: 1px solid;
     border-color: lightblue;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+td:last-child, th:last-child {
+    border-right: none;
 }
 
 table {
     border: 2px solid;
     border-color: lightblue;
-    padding: 0.2rem;
+    padding: 0.4rem;
+    border-radius: 5px;
+    font-size: 0.90rem;
+    border-collapse: collapse;
+}
+
+th {
+    width: fit-content;
+    text-align: left;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+td, th {
+    padding: 0.4rem;
 }
 
 .edit {
@@ -316,4 +339,29 @@ table {
 .down {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
+}
+
+.table-box {
+    display:flex;
+    gap:10px;
+    margin-bottom: 10px;
+    border: 2px solid lightblue;
+    padding: 0.75rem;
+    width: fit-content;
+    /* border-radius: 5px; */
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid lightblue;
+    padding: 0.75rem;
+    width: 60vw;
+}
+
+.card form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
 }
