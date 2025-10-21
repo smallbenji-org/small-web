@@ -77,8 +77,9 @@ namespace SmallEnergy.Auth
 
         public async Task<User> FindByIdAsync(string userId, CancellationToken cancellationToken)
         {
-            var sql = "SELECT * FROM dbo.umbracoUser WHERE id = @Id";
-            return (User)await _db.LoadData<User, dynamic>(sql, new { Id = userId }, "DefaultConnection");
+            var sql = "SELECT * FROM dbo.vUmbracoUsers WHERE id = @Id";
+            var users = await _db.LoadData<User, dynamic>(sql, new { Id = int.Parse(userId) }, "DefaultConnection");
+            return users.FirstOrDefault();
         }
 
         public void Dispose() { }
