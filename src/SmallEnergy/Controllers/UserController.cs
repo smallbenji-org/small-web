@@ -50,7 +50,7 @@ namespace SmallEnergy.Controllers
         public async Task<IActionResult> DeleteMember([FromForm] int id)
         {
             await userData.DeleteMember(id);
-            return View();
+            return View("Index");
         }
 
         [HttpPost]
