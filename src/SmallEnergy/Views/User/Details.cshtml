@@ -3,26 +3,25 @@
     ViewData["Title"] = "User Details";
 }
 
-<h1>User @Model.Id Details</h1>
-
-<div>
-    <h3>Avatar:</h3>
-    <img src="@Url.Action("Avatar", "User", new { id = Model.Id, t = DateTime.Now.Ticks })" 
-         alt="User Avatar" 
-         width="150" 
-         style="border: 1px solid #ddd; border-radius: 4px; padding: 5px;" />
-</div>
-
-<div>
-    <h3>User Information:</h3>
-    <p><strong>User Name:</strong> @Model.userName</p>
-    <p><strong>User Login:</strong> @Model.userLogin</p>
-    <p><strong>Password:</strong> @Model.userPassword</p>
-    <p><strong>Kind:</strong> @Model.kind</p>
-    <p><strong>Status:</strong> @(Model.userDisabled ? "Disabled" : "Enabled")</p>
-</div>
-
-<div>
-    <a class="return-home-page" asp-controller="User" asp-action="Index">Return to home page</a>
-    <a asp-controller="User" asp-action="EditUser" asp-route-id="@Model.Id">Edit User</a>
+<div class="card">
+    <div class="card-header">
+        User @Model.Id Details
+    </div>
+    <div class="card-content">
+        <div class="card-content-left">
+            <p><strong>User Name:</strong> @Model.userName</p>
+            <p><strong>User Login:</strong> @Model.userLogin</p>
+            <p><strong>Password:</strong> @Model.userPassword</p>
+            <p><strong>Kind:</strong> @Model.kind</p>
+            <p><strong>Status:</strong> @(Model.userDisabled ? "Disabled" : "Enabled")</p>
+        </div>
+        <div class="card-content-right">
+            <img src="@Url.Action("Avatar", "User", new { id = Model.Id, t = DateTime.Now.Ticks })" 
+                alt="User Avatar" />
+        </div>
+    </div>
+    <div class="card-actions">
+        <a class="button primary" asp-controller="User"asp-action="Index">Return to home page</a>
+        <a asp-controller="User" asp-action="EditUser" asp-route-id="@Model.Id" class="button success">Edit User</a>
+    </div>
 </div>

@@ -28,12 +28,26 @@ html {
     min-height: 100%;
 }
 
+.imagegrid img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
 body {
     margin-bottom: 60px;
 }
 
 footer * {
     user-select: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: inherit;
 }
 
 .navbar {
@@ -67,9 +81,9 @@ footer * {
     font-weight: 800;
 }
 
-    .navbar-pages li a:hover, .logo:hover {
+    /* .navbar-pages li a:hover, .logo:hover {
         color: darkslateblue;
-    }
+    } */
 
 .navbar-pages {
     width: auto;
