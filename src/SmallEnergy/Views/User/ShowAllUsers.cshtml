@@ -11,8 +11,8 @@
 	<div class="card-content">
 		<div class="card-content-table-actions">
 			<div class="card-content-table-actions-group">
-				<form asp-controller="User" asp-action="Search" method="post">
-					<input type="text" class="input" name="input" list="predefinedSearches" placeholder="search for username..." />
+				<form asp-controller="User" asp-action="ShowAllUsers">
+					<input type="text" class="input" name="filter" list="predefinedSearches" placeholder="search for username..." />
 
 					<datalist id="predefinedSearches">
 						@foreach (string option in Model.Searches)
@@ -89,17 +89,17 @@
 	</div>
 </div>
 
-@if (Model.Users.Count() > 0 && Model.Pagination.maxPages > 0)
+@if (Model.Users.Count() > 0)
 {
 	<ul class="pagination">
-		<li><a asp-action="ShowAllUsers" asp-controller="User" asp-route-id="1">&laquo;</a></li>
+		<li><a asp-action="ShowAllUsers" asp-controller="User" asp-route-id="1" asp-route-filter="@Model.filter">&laquo;</a></li>
 		@for (int i = Model.Pagination.CurrentPage; i < Model.Pagination.CurrentPage + 5; i++)
 		{
 			int pageNum = i;
 			if (Model.Pagination.CurrentPage > 1) { pageNum--; }
 			if (pageNum > Model.Pagination.maxPages) { break; }
-			<li><a asp-action="ShowAllUsers" asp-controller="User" asp-route-id="@pageNum">@pageNum</a></li>
+			<li><a asp-action="ShowAllUsers" asp-controller="User" asp-route-id="@pageNum" asp-route-filter="@Model.filter">@pageNum</a></li>
 		}
-		<li><a asp-action="ShowAllUsers" asp-controller="User" asp-route-id="@Model.Pagination.maxPages">&raquo;</a></li>
+		<li><a asp-action="ShowAllUsers" asp-controller="User" asp-route-id="@Model.Pagination.maxPages" asp-route-filter="@Model.filter">&raquo;</a></li>
 	</ul>
 }

@@ -7,5 +7,6 @@ namespace SmallEnergy.Models
         public IEnumerable<User> Users { get; set; }
         public List<string> Searches { get; set; }
         public PaginationViewModel Pagination = new();
+        public string filter { get; set; }
     }
 }

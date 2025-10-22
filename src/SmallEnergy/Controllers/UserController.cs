@@ -28,7 +28,7 @@ namespace SmallEnergy.Controllers
             this.paginationHelper = paginationHelper;
         }
 
-        public IActionResult Index(int id = 1)
+        public IActionResult Index()
         {
             return View();
         }
@@ -39,12 +39,20 @@ namespace SmallEnergy.Controllers
             return View(user);
         }
 
-        public async Task<IActionResult> ShowAllUsers(int? id = 1)
+        public async Task<IActionResult> ShowAllUsers(int? id = 1, string filter = "")
         {
             var searches = await searchData.GetPopularSearches(5);
             var users = await userData.GetUsers();
             UsersViewModel viewModel = new UsersViewModel();
             viewModel.Users = users;
+
+            if (!string.IsNullOrEmpty(filter))
+            {
+                viewModel.filter = filter;
+                viewModel.Users = users.Where(x => x.userName.ToLower().Contains(viewModel.filter.ToLower())).ToList();               
+                searchData.AddSearch(viewModel.filter);
+            }           
+
             viewModel.Searches = (List<string>)searches;
 
             viewModel.Pagination.maxPages = paginationHelper.getMaxPages(viewModel.Users.Count(), 10);
@@ -144,22 +152,6 @@ namespace SmallEnergy.Controllers
         {
             User user = new User();
             return View(user);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Search([FromForm] string input)
-        {
-            var users = await userData.GetUsers();
-            var searches = await searchData.GetPopularSearches(5);
-            if (input != null) 
-            {
-                users = users.Where(x => x.userName.ToLower().Contains(input.ToLower())).ToList();
-                searchData.AddSearch(input);
-            }
-            UsersViewModel viewModel = new UsersViewModel();
-            viewModel.Users = users;
-            viewModel.Searches = (List<string>)searches;
-            return View("ShowAllUsers", viewModel);
         }
     }
 }
