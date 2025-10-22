@@ -43,9 +43,9 @@ namespace SmallEnergy.Controllers
             return View(new {users = users, searches = (List<string>)searches });
         }
 
-        public IActionResult EditUser(int id)
+        public async Task<IActionResult> EditUser(int id)
         {
-            var user = userData.GetUser(id).Result;
+            var user = await userData.GetUser(id);
             return View(user);
         }
 

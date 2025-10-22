@@ -60,7 +60,7 @@
 					<td>@user.kind</td>
 
 				<td>
-                    <form asp-controller="User" asp-action="EditUser">
+						<form asp-controller="User" asp-action="EditUser" asp-route-id="@user.Id">
                         <input type="hidden" name="Id" value="@user.Id" />
                         <button class="button success">Edit</button>
                     </form>
