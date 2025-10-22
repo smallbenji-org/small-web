@@ -89,7 +89,7 @@
 	</div>
 </div>
 
-@if (Model.Users.Count() > 0)
+@if (Model.Users.Count() > 0 && Model.Pagination.maxPages > 0)
 {
 	<ul class="pagination">
 		<li><a asp-action="ShowAllUsers" asp-controller="User" asp-route-id="1">&laquo;</a></li>
