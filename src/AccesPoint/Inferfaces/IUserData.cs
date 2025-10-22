@@ -11,7 +11,6 @@ namespace AccesPoint.Inferfaces
     {
         Task<IEnumerable<User>> GetUsers();
         Task<User> GetUser(int id);
-        Task<User> GetSingleUser(string id);
         Task CreateUser(User user);
         Task UpdateMember(User user);
         Task DeleteMember(int id);

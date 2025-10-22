@@ -5,7 +5,8 @@ using AccesPoint.Users;
 using Microsoft.AspNetCore.Identity;
 using SmallEnergy.Auth;
 using SmallEnergy.Interfaces;
-using EmilsAuto.Helper;
+using Microsoft.AspNetCore.DataProtection;
+using SmallEnergy.Helpers;
 
 namespace SmallEnergy
 {
@@ -33,6 +34,10 @@ namespace SmallEnergy
                 options.LoginPath = "/Auth";
             });
 
+            builder.Services.AddDataProtection()
+                .PersistKeysToFileSystem(new DirectoryInfo(@"/keys/"))
+                .SetApplicationName("myapp");
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -40,7 +45,7 @@ namespace SmallEnergy
             {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                // app.UseHsts();
             }
             else
             {
@@ -49,9 +54,9 @@ namespace SmallEnergy
             app.UseStatusCodePagesWithReExecute("/Shared/Error{0}");
 
             // app.UseHttpsRedirection();
-            // app.UseFileServer();
 
             app.UseRouting();
+            app.UseFileServer();
             app.UseStaticFiles();
 
             app.UseAuthorization();
