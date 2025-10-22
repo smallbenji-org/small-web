@@ -27,11 +27,11 @@ else
 				<div class="card-content-form">
 					<div>
 						<label for="username">Username</label>
-						<input type="text" name="username" class="input" />
+						<input type="text" name="username" class="input" required/>
 					</div>
 					<div>
 						<label for="password">Password</label>
-						<input type="password" name="password" class="input" />
+						<input type="password" name="password" class="input" required />
 					</div>
 					@if (Model.failedText != string.Empty)
 					{
