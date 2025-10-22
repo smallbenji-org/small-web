@@ -3,7 +3,20 @@
 	ViewData["Title"] = "Login";
 }
 
-@if (!Model.loggedIn)
+@if (User.Identity != null && User.Identity.IsAuthenticated)
+{
+	<form asp-controller="Auth" asp-action="Logout" method="post">
+		<div class="card">
+			<div class="card-header">
+				You are logged in as @User.Identity.Name
+			</div>
+			<div class="card-actions">
+				<button type="submit" class="button success">Logout</button>
+			</div>
+		</div>
+	</form>
+}
+else
 {
 	<form asp-controller="Auth" asp-action="Login" method="post">
 		<div class="card">
@@ -28,19 +41,6 @@
 			</div>
 			<div class="card-actions">
 				<button type="submit" class="button success">Login</button>
-			</div>
-		</div>
-	</form>
-}
-else
-{
-	<form asp-controller="Auth" asp-action="Logout" method="post">
-		<div class="card">
-			<div class="card-header">
-				You are logged in.
-			</div>			
-			<div class="card-actions">
-				<button type="submit" class="button success">Logout</button>
 			</div>
 		</div>
 	</form>

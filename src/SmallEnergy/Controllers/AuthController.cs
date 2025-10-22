@@ -17,7 +17,6 @@ namespace SmallEnergy.Controllers
         public IActionResult Index()
         {
             LogInViewModel logInViewModel = new LogInViewModel();
-            logInViewModel.loggedIn = signInManager.IsSignedIn(User);
             return View(logInViewModel);
         }
 
@@ -29,7 +28,6 @@ namespace SmallEnergy.Controllers
             if (!result.Succeeded)
             {
                 LogInViewModel logInViewModel = new LogInViewModel();
-                logInViewModel.loggedIn = signInManager.IsSignedIn(User);
                 logInViewModel.failedText = "Failed! Make sure password or name is correct.";
                 return View("Index", logInViewModel);
             }
@@ -45,7 +43,6 @@ namespace SmallEnergy.Controllers
 
         public class LogInViewModel
         {
-            public bool loggedIn = false;
             public string failedText = string.Empty;
         }
     }
