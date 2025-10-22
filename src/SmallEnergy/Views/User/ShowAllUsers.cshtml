@@ -3,6 +3,7 @@
 	ViewData["Title"] = "All Users";
 }
 
+
 <div class="card">
 	<div class="card-header">
 		Show all users
@@ -29,62 +30,76 @@
 				</form>
 			</div>
 		</div>
-		<table>
-			<tr>
-				<th>Id</th>
-				<th>User Disabled</th>
-				<th>User Name</th>
-				<th>User Login</th>
-				<th>Last Password Change</th>
-				<th>Last Login Date</th>
-				<th>Create Date</th>
-				<th>Kind</th>
-				<th colspan="3">Actions</th>
-			</tr>
-			@foreach (var user in Model.Users)
-			{
+		@if (Model.Users.Count() > 0)
+		{
+			<table>
 				<tr>
-					<td>@user.Id</td>
-					<td>@user.userDisabled</td>
-					<td>@user.userName</td>
-					<td>@user.userLogin</td>
-					<td>@user.lastPasswordChangeDate</td>
-					<td>@user.lastLoginDate</td>
-					<td>@user.createDate</td>
-					<td>@user.kind</td>
+					<th>Id</th>
+					<th>User Disabled</th>
+					<th>User Name</th>
+					<th>User Login</th>
+					<th>Last Password Change</th>
+					<th>Last Login Date</th>
+					<th>Create Date</th>
+					<th>Kind</th>
+					<th colspan="3">Actions</th>
+				</tr>
+				@foreach (var user in Model.Users)
+				{
+					<tr>
+						<td>@user.Id</td>
+						<td>@user.userDisabled</td>
+						<td>@user.userName</td>
+						<td>@user.userLogin</td>
+						<td>@user.lastPasswordChangeDate</td>
+						<td>@user.lastLoginDate</td>
+						<td>@user.createDate</td>
+						<td>@user.kind</td>
 
-				<td>
-						<form asp-controller="User" asp-action="EditUser" asp-route-id="@user.Id">
-                        <input type="hidden" name="Id" value="@user.Id" />
-                        <button class="button success">Edit</button>
-                    </form>
-				</td>
-				<td>
-					<form asp-controller="User" asp-action="Details" asp-route-id="@user.Id">
-						<input type="hidden" name="Id" value="@user.Id" />
-						<button class="button primary">Details</button>
-					</form>
-				</td>
-				<td>					
-                    <form asp-controller="User" asp-action="DeleteMember" method="post">
-                        <input type="hidden" name="Id" value="@user.Id" />
-                        <button class="button danger">Delete</button>
-                    </form>
-				</td>
-			</tr>
+						<td>
+							<form asp-controller="User" asp-action="EditUser" asp-route-id="@user.Id">
+								<input type="hidden" name="Id" value="@user.Id" />
+								<button class="button success">Edit</button>
+							</form>
+						</td>
+						<td>
+							<form asp-controller="User" asp-action="Details" asp-route-id="@user.Id">
+								<input type="hidden" name="Id" value="@user.Id" />
+								<button class="button primary">Details</button>
+							</form>
+						</td>
+						<td>
+							<form asp-controller="User" asp-action="DeleteMember" method="post">
+								<input type="hidden" name="Id" value="@user.Id" />
+								<button class="button danger">Delete</button>
+							</form>
+						</td>
+					</tr>
+				}
+			</table>
 		}
-		</table>
+		else
+		{
+			@foreach (string search in Model.Searches)
+			{
+				<h1>Couldnt find anything. Most people search for "@search"</h1>
+				break;
+			}
+		}
 	</div>
 </div>
 
-<ul class="pagination">
-	<li><a asp-action="ShowAllUsers" asp-controller="User" asp-route-id="1">&laquo;</a></li>
-	@for (int i = Model.Pagination.CurrentPage; i < Model.Pagination.CurrentPage + 5; i++)
-	{
-		int pageNum = i;
-		if (Model.Pagination.CurrentPage > 1) { pageNum--; }
-		if (pageNum > Model.Pagination.maxPages) { break; }
-		<li><a asp-action="ShowAllUsers" asp-controller="User" asp-route-id="@pageNum">@pageNum</a></li>
-	}
-	<li><a asp-action="ShowAllUsers" asp-controller="User" asp-route-id="@Model.Pagination.maxPages">&raquo;</a></li>
-</ul>
+@if (Model.Users.Count() > 0)
+{
+	<ul class="pagination">
+		<li><a asp-action="ShowAllUsers" asp-controller="User" asp-route-id="1">&laquo;</a></li>
+		@for (int i = Model.Pagination.CurrentPage; i < Model.Pagination.CurrentPage + 5; i++)
+		{
+			int pageNum = i;
+			if (Model.Pagination.CurrentPage > 1) { pageNum--; }
+			if (pageNum > Model.Pagination.maxPages) { break; }
+			<li><a asp-action="ShowAllUsers" asp-controller="User" asp-route-id="@pageNum">@pageNum</a></li>
+		}
+		<li><a asp-action="ShowAllUsers" asp-controller="User" asp-route-id="@Model.Pagination.maxPages">&raquo;</a></li>
+	</ul>
+}
