@@ -30,5 +30,12 @@ namespace SmallEnergy.Controllers
             }
             return Ok("Logged in");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return Ok("Signed out");
+        }
     }
 }

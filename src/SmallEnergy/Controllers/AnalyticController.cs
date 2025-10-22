@@ -21,7 +21,7 @@ namespace SmallEnergy.Controllers
 
         public async Task<IActionResult> ShowAllSearches()
         {
-           var searches = await searchData.GetPopularSearchesByDate(100, new DateTime(2000, 1, 1, 12, 0, 0, DateTimeKind.Utc), DateTime.Now.AddDays(1));
+           var searches = await searchData.GetPopularSearchesByDate(100, new DateTime(2000, 1, 1, 12, 0, 0, DateTimeKind.Utc), DateTime.UtcNow.AddDays(1));
             return View(new { searches = (List<(string, int)>)searches });
         }
 
