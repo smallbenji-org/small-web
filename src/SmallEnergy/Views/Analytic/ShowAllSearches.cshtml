@@ -10,18 +10,13 @@
 	<div class="card-content">
 		<div class="card-content-table-actions">
 			<div class="card-content-table-actions-group">
-				<form asp-controller="Analytic" asp-action="ShowAllSearches" asp-route-toDate="@Model.toDate" asp-route-fromDate="@Model.fromDate" >
+				<form asp-controller="Analytic" asp-action="ShowAllSearches" asp-route-filter="@Model.filter">
 					<input type="text" class="input" name="filter" list="predefinedSearches" placeholder="search for analytic..." />
 					<button class="button primary">Search</button>
-				</form>
-			</div>
-			<div class="card-content-table-actions-group">
-				<form asp-controller="Analytic" asp-action="ShowAllSearches" asp-route-filter="@Model.filter">
 					<p>fromDate</p>
 					<input type="datetime-local" name="fromDate" value="@Model.fromDate.ToString("yyyy-MM-dd HH:mm:ss")" />
 					<p>toDate</p>
-					<input type="datetime-local" name="toDate" value="@Model.toDate.ToString("yyyy-MM-dd HH:mm:ss")" />
-					<button>Filter</button>
+					<input type="datetime-local" name="toDate" value="@Model.toDate.ToString("yyyy-MM-dd HH:mm:ss")" />								
 				</form>
 			</div>
 		</div>
