@@ -13,30 +13,30 @@
                 <input type="hidden" name="Id" value="@Model.Id"/>
             
                 <div>
-                    <label>User Name:</label>
-                    <input type="text" class="input" name="userName" value="@Model.userName" placeholder="Enter user name" required>
+                    <label for="userName">User Name:</label>
+                    <input type="text" class="input" id="userName" name="userName" value="@Model.userName" placeholder="Enter user name" required>
                 </div>
                 
                 <div>
-                    <label>User Login:</label>
-                    <input type="text" class="input" name="userLogin" value="@Model.userLogin" placeholder="Enter login" required>
+                    <label for="userLogin">User Login:</label>
+                    <input type="text" class="input" id="userLogin" name="userLogin" value="@Model.userLogin" placeholder="Enter login" required>
                 </div>
                 
                 <div>
-                    <label>User Password:</label>
-                    <input type="text" class="input" name="userPassword" value="@Model.userPassword" placeholder="Enter password" required>
+                    <label for="userPassword">User Password:</label>
+                    <input type="text" class="input" id="userPassword" name="userPassword" value="@Model.userPassword" placeholder="Enter password" required>
                 </div>
                 
                 <div>
-                    <label>Kind:</label>
-                    <input type="number" class="input" name="kind" value="@Model.kind" placeholder="Enter kind">
+                    <label for="kind">Kind:</label>
+                    <input type="number" class="input" id="kind" name="kind" value="@Model.kind" placeholder="Enter kind">
                 </div>
                 
                 <div>
-                    <label>User Status:</label>
-                    <select name="userDisabled" class="input">
-                        <option value="false" selected="@(!Model.userDisabled)">Enabled</option>
+                    <label for="userDisabled">User Status:</label>
+                    <select name="userDisabled" id="userDisabled" class="input">
                         <option value="true" selected="@Model.userDisabled">Disabled</option>
+                        <option value="false" selected="@(!Model.userDisabled)">Enabled</option>
                     </select>
                 </div>
             </div>
@@ -44,8 +44,8 @@
                 <img src="@Url.Action("Avatar", "User", new { id = Model.Id, t = DateTime.Now.Ticks })" 
                     alt="User Avatar" />
                 <div>
-                    <label>Upload new avatar:</label>
-                    <input type="file" class="input" name="avatarFile" accept="image/*">
+                    <label for="avatarFile">Upload new avatar:</label>
+                    <input type="file" class="input" id="avatarFile" name="avatarFile" accept="image/*">
                 </div>
             </div>
         </div>
