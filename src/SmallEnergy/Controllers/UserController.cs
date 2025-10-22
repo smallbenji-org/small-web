@@ -39,7 +39,7 @@ namespace SmallEnergy.Controllers
         public async Task<IActionResult> ShowAllUsers()
         {
             var searches = await searchData.GetPopularSearches(5);
-            var users = await userData.GetUsers();
+            var users = await userData.GetUsers(10);
             return View(new {users = users, searches = (List<string>)searches });
         }
 
@@ -139,7 +139,7 @@ namespace SmallEnergy.Controllers
         [HttpPost]
         public async Task<IActionResult> Search([FromForm] string input)
         {
-            var users = await userData.GetUsers();
+            var users = await userData.GetUsers(10);
             var searches = await searchData.GetPopularSearches(5);
             if (input != null) 
             {
