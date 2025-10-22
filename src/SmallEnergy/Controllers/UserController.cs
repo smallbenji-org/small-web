@@ -102,6 +102,7 @@ namespace SmallEnergy.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateMember([FromForm] User user, IFormFile avatarFile)
         {
+            var originalUser = await userData.GetUser(user.Id);
             if (avatarFile != null && avatarFile.Length > 0)
             {
                 using var ms = new MemoryStream();
@@ -117,6 +118,11 @@ namespace SmallEnergy.Controllers
                 }
             }
            
+            if (originalUser.userPassword != user.userPassword)
+            {
+                user.userPassword = userManager.PasswordHasher.HashPassword(user, user.userPassword);
+            }
+
             await userData.UpdateMember(user);
             return View("Index");
         }
