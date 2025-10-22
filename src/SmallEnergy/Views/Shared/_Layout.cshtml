@@ -28,9 +28,6 @@
 					<li>
 						<a class="@(ViewData["Title"]?.ToString() == "Analytics" ? "active" : "")" asp-area="" asp-controller="Analytic" asp-action="Index">Analytics</a>
 					</li>
-					<li>
-						<a class="@(ViewData["Title"]?.ToString() == "Privacy Policy" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-					</li>
 					@if (User.Identity != null && User.Identity.IsAuthenticated)
 					{
 						<li>
@@ -67,7 +64,8 @@
 
 	<footer class="border-top footer text-muted">
 		<div class="container">
-			&copy; 2025 - SmallEnergy - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+			I østen stiger solen op, den spreder guld på sky, går over hav og bjergetop, går over land og by.
+			Den kommer fra den favre kyst, hvor Paradiset lå, den bringer lys og liv og lyst, til store og til små.
 		</div>
 	</footer>
 	@await RenderSectionAsync("Scripts", required: false)
