@@ -48,10 +48,11 @@ namespace SmallEnergy
             }
             app.UseStatusCodePagesWithReExecute("/Shared/Error{0}");
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            // app.UseHttpsRedirection();
+            // app.UseFileServer();
 
             app.UseRouting();
+            app.UseStaticFiles();
 
             app.UseAuthorization();
 
