@@ -16,4 +16,9 @@
     <ProjectReference Include="..\AccesPoint\AccesPoint.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\lib\" />
+  </ItemGroup>
+
 </Project>
