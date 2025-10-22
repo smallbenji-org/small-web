@@ -3,6 +3,7 @@ using AccesPoint.Inferfaces;
 using AccesPoint.Models;
 using AccesPoint.Users;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SmallEnergy.Models;
 using System.Data;
@@ -15,11 +16,13 @@ namespace SmallEnergy.Controllers
     {
         private readonly IUserData userData;
         private readonly ISearch searchData;
+        private readonly UserManager<User> userManager;
 
-        public UserController(IUserData userData, ISearch searchData)
+        public UserController(IUserData userData, ISearch searchData, UserManager<User> userManager)
         {
             this.userData = userData;
             this.searchData = searchData;
+            this.userManager = userManager;
         }
 
         public IActionResult Index()
@@ -100,7 +103,7 @@ namespace SmallEnergy.Controllers
                     user.avatarBinary = existingUser.avatarBinary;
                 }
             }
-
+           
             await userData.UpdateMember(user);
             return View("Index");
         }
@@ -115,6 +118,7 @@ namespace SmallEnergy.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateMember([FromForm] User user)
         {
+            user.userPassword = userManager.PasswordHasher.HashPassword(user, user.userPassword);
             await userData.CreateUser(user);
             return RedirectToAction("ShowAllUsers");
         }
