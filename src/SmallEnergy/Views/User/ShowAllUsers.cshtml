@@ -10,12 +10,6 @@
 	<div class="card-content">
 		<div class="card-content-table-actions">
 			<div class="card-content-table-actions-group">
-				<form asp-controller="User" asp-action="GetBoxed" method="post">
-					<input type="text" class="input" name="input" value="" placeholder="search for username..." />
-					<button class="button primary">Safe Search</button>
-				</form>
-			</div>
-			<div class="card-content-table-actions-group">
 				<form asp-controller="User" asp-action="Search" method="post">
 					<input type="text" class="input" name="input" list="predefinedSearches" placeholder="search for username..." />
 

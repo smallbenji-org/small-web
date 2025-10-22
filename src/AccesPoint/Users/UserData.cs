@@ -24,8 +24,6 @@ namespace AccesPoint.Users
 
         public Task DeleteMember(int id) => _db.SaveData("EXEC [dbo].[dspDeleteUmbracoUser] @Id", new { Id = id }, "DefaultConnection");
 
-        public Task<User> GetSingleUser(string sql) => _db.LoadData<User, dynamic>(sql, null, "DefaultConnection").ContinueWith(t => t.Result.FirstOrDefault());
-
         public Task<User> GetUser(int id) => _db.LoadData<User, dynamic>("EXEC [dbo].[dspGetUmbracoUser] @Id", new {Id = id}, "DefaultConnection").ContinueWith(t => t.Result.FirstOrDefault());
 
         public Task<IEnumerable<User>> GetUsers() => _db.LoadData<User, dynamic>("EXEC [dbo].[dspGetAllUmbracoUsers]", null, "DefaultConnection");
