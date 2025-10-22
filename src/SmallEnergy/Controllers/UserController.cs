@@ -39,7 +39,7 @@ namespace SmallEnergy.Controllers
             return View(user);
         }
 
-        public async Task<IActionResult> ShowAllUsers(int? id = 1, string filter = "")
+        public async Task<IActionResult> ShowAllUsers(int? id, string filter = "")
         {
             var searches = await searchData.GetPopularSearches(5);
             var users = await userData.GetUsers();

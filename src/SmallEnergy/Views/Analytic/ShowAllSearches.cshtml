@@ -1,29 +1,57 @@
-﻿@model dynamic
+﻿@model SmallEnergy.Models.AnalyticViewModel;
 @{
 	ViewData["Title"] = "Analytics";
 }
 
-<form asp-controller="Analytic" asp-action="FilterDate" method="post">
-	<p>fromDate</p>
-	<input type="datetime-local" name="fromDate" value="2000-01-01 12:00:00" />
-	<p>toDate</p>
-	<input type="datetime-local" name="toDate" value="@DateTime.UtcNow.AddDays(1).ToString("yyyy-MM-dd HH:mm:ss")" />
-	<button>Filter</button>
-</form>
-<table class="table">
-	<thead>
-		<tr>
-			<th>Searched for</th>
-			<th>Interactions <i class="arrow up"></i></th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var pair in Model.searches)
-		{
+<div class="card">
+	<div class="card-header">
+		Show all users
+	</div>
+	<div class="card-content">
+		<div class="card-content-table-actions">
+			<div class="card-content-table-actions-group">
+				<form asp-controller="Analytic" asp-action="ShowAllSearches" asp-route-toDate="@Model.toDate" asp-route-fromDate="@Model.fromDate" >
+					<input type="text" class="input" name="filter" list="predefinedSearches" placeholder="search for analytic..." />
+					<button class="button primary">Search</button>
+				</form>
+			</div>
+			<div class="card-content-table-actions-group">
+				<form asp-controller="Analytic" asp-action="ShowAllSearches" asp-route-filter="@Model.filter">
+					<p>fromDate</p>
+					<input type="datetime-local" name="fromDate" value="@Model.fromDate.ToString("yyyy-MM-dd HH:mm:ss")" />
+					<p>toDate</p>
+					<input type="datetime-local" name="toDate" value="@Model.toDate.ToString("yyyy-MM-dd HH:mm:ss")" />
+					<button>Filter</button>
+				</form>
+			</div>
+		</div>
+		<table>
 			<tr>
-				<td>@pair.Item1</td>
-				<td>@pair.Item2</td>
+				<th>Searched for</th>
+				<th>Interactions <i class="arrow up"></i></th>
 			</tr>
-		}		
-	</tbody>
-</table>
+			@foreach (var pair in Model.Searches)
+			{
+				<tr>
+					<td>@pair.Item1</td>
+					<td>@pair.Item2</td>
+				</tr>
+			}
+		</table>
+	</div>
+</div>
+
+@if (Model.Searches.Count() > 0)
+{
+	<ul class="pagination">
+		<li><a asp-action="ShowAllSearches" asp-controller="Analytic" asp-route-id="1" asp-route-filter="@Model.filter" asp-route-toDate="@Model.toDate" asp-route-fromDate="@Model.fromDate">&laquo;</a></li>
+		@for (int i = Model.Pagination.CurrentPage; i < Model.Pagination.CurrentPage + 5; i++)
+		{
+			int pageNum = i;
+			if (Model.Pagination.CurrentPage > 1) { pageNum--; }
+			if (pageNum > Model.Pagination.maxPages) { break; }
+			<li><a asp-action="ShowAllSearches" asp-controller="Analytic" asp-route-id="@pageNum" asp-route-filter="@Model.filter" asp-route-toDate="@Model.toDate" asp-route-fromDate="@Model.fromDate">@pageNum</a></li>
+		}
+		<li><a asp-action="ShowAllSearches" asp-controller="Analytic" asp-route-id="@Model.Pagination.maxPages" asp-route-filter="@Model.filter" asp-route-toDate="@Model.toDate" asp-route-fromDate="@Model.fromDate">&raquo;</a></li>
+	</ul>
+}
