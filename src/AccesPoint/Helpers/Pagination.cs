@@ -1,6 +1,6 @@
 ﻿using SmallEnergy.Interfaces;
 
-namespace EmilsAuto.Helper
+namespace SmallEnergy.Helpers
 {
     public class Pagination : IPagination
     {

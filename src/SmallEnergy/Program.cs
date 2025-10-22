@@ -5,7 +5,7 @@ using AccesPoint.Users;
 using Microsoft.AspNetCore.Identity;
 using SmallEnergy.Auth;
 using SmallEnergy.Interfaces;
-using EmilsAuto.Helper;
+using SmallEnergy.Helpers;
 
 namespace SmallEnergy
 {
