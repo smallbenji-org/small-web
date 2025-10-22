@@ -16,7 +16,9 @@ namespace SmallEnergy.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            LogInViewModel logInViewModel = new LogInViewModel();
+            logInViewModel.loggedIn = signInManager.IsSignedIn(User);
+            return View(logInViewModel);
         }
 
         [HttpPost]
@@ -26,16 +28,25 @@ namespace SmallEnergy.Controllers
 
             if (!result.Succeeded)
             {
-                return Unauthorized("Invalid login attempt.");
+                LogInViewModel logInViewModel = new LogInViewModel();
+                logInViewModel.loggedIn = signInManager.IsSignedIn(User);
+                logInViewModel.failedText = "Failed! Make sure password or name is correct.";
+                return View("Index", logInViewModel);
             }
-            return Ok("Logged in");
+            return RedirectToAction("Index");
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
-            return Ok("Signed out");
+            return RedirectToAction("Index");
+        }
+
+        public class LogInViewModel
+        {
+            public bool loggedIn = false;
+            public string failedText = string.Empty;
         }
     }
 }

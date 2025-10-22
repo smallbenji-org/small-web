@@ -1,35 +1,47 @@
-﻿@{
+﻿@model SmallEnergy.Controllers.AuthController.LogInViewModel;
+@{
 	ViewData["Title"] = "Login";
 }
 
-<form asp-controller="Auth" asp-action="Login" method="post">
-	<div class="card">
-		<div class="card-header">
-			Login
-		</div>
-		<div class="card-content">
-			<div class="card-content-form">
-				<div>
-					<label for="username">Username</label>
-					<input type="text" name="username" class="input" />
-				</div>
-				<div>
-					<label for="password">Password</label>
-					<input type="password" name="password" class="input" />
+@if (!Model.loggedIn)
+{
+	<form asp-controller="Auth" asp-action="Login" method="post">
+		<div class="card">
+			<div class="card-header">
+				Login
+			</div>
+			<div class="card-content">
+				<div class="card-content-form">
+					<div>
+						<label for="username">Username</label>
+						<input type="text" name="username" class="input" />
+					</div>
+					<div>
+						<label for="password">Password</label>
+						<input type="password" name="password" class="input" />
+					</div>
+					@if (Model.failedText != string.Empty)
+					{
+						<label>@Model.failedText</label>
+					}
 				</div>
 			</div>
+			<div class="card-actions">
+				<button type="submit" class="button success">Login</button>
+			</div>
 		</div>
-		<div class="card-actions">
-			<button type="submit" class="button success">Login</button>
+	</form>
+}
+else
+{
+	<form asp-controller="Auth" asp-action="Logout" method="post">
+		<div class="card">
+			<div class="card-header">
+				You are logged in.
+			</div>			
+			<div class="card-actions">
+				<button type="submit" class="button success">Logout</button>
+			</div>
 		</div>
-	</div>
-
-
-
-	@* <section class="centergroup">
-		<h1 class="display-4">Please sign in</h1>
-		<input name="username" type="text" placeholder="Username" />
-		<input name="password" type="password" placeholder="Password" />
-	</section>
-	<button>Sign in</button> *@
-</form>
+	</form>
+}
