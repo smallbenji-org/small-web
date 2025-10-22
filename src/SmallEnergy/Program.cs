@@ -4,6 +4,8 @@ using AccesPoint.SqlDataAccess;
 using AccesPoint.Users;
 using Microsoft.AspNetCore.Identity;
 using SmallEnergy.Auth;
+using SmallEnergy.Interfaces;
+using EmilsAuto.Helper;
 
 namespace SmallEnergy
 {
@@ -19,6 +21,7 @@ namespace SmallEnergy
             builder.Services.AddScoped<IUserData, UserData>();
             builder.Services.AddScoped<ISearch, Search>();
             builder.Services.AddScoped<ISqlDataAccess, SqlDataAccess>();
+            builder.Services.AddScoped<IPagination, Pagination>();
 
             builder.Services.AddIdentity<User, UserRole>()
                  .AddUserStore<UserStore>()

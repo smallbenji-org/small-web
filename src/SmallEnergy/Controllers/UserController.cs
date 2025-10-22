@@ -2,9 +2,11 @@
 using AccesPoint.Inferfaces;
 using AccesPoint.Models;
 using AccesPoint.Users;
+using EmilsAuto.Helper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SmallEnergy.Interfaces;
 using SmallEnergy.Models;
 using System.Data;
 using System.Threading.Tasks;
@@ -17,15 +19,17 @@ namespace SmallEnergy.Controllers
         private readonly IUserData userData;
         private readonly ISearch searchData;
         private readonly UserManager<User> userManager;
+        private readonly IPagination paginationHelper;
 
-        public UserController(IUserData userData, ISearch searchData, UserManager<User> userManager)
+        public UserController(IUserData userData, ISearch searchData, UserManager<User> userManager, IPagination paginationHelper)
         {
             this.userData = userData;
             this.searchData = searchData;
             this.userManager = userManager;
+            this.paginationHelper = paginationHelper;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int id = 1)
         {
             return View();
         }
@@ -36,11 +40,20 @@ namespace SmallEnergy.Controllers
             return View(user);
         }
 
-        public async Task<IActionResult> ShowAllUsers()
+        public async Task<IActionResult> ShowAllUsers(int? id = 1)
         {
             var searches = await searchData.GetPopularSearches(5);
-            var users = await userData.GetUsers(10);
-            return View(new {users = users, searches = (List<string>)searches });
+            var users = await userData.GetUsers();
+            UsersViewModel viewModel = new UsersViewModel();
+            viewModel.Users = users;
+            viewModel.Searches = (List<string>)searches;
+
+            viewModel.Pagination.maxPages = paginationHelper.getMaxPages(viewModel.Users.Count(), 10);
+            if (id == null || id > viewModel.Pagination.maxPages || id < 1) { id = 1; }
+            viewModel.Pagination.CurrentPage = (int)id;
+            viewModel.Users = paginationHelper.GetPage(10, viewModel.Pagination.CurrentPage, viewModel.Users.ToList());
+
+            return View(viewModel);
         }
 
         public async Task<IActionResult> EditUser(int id)
@@ -139,14 +152,17 @@ namespace SmallEnergy.Controllers
         [HttpPost]
         public async Task<IActionResult> Search([FromForm] string input)
         {
-            var users = await userData.GetUsers(10);
+            var users = await userData.GetUsers();
             var searches = await searchData.GetPopularSearches(5);
             if (input != null) 
             {
                 users = users.Where(x => x.userName.ToLower().Contains(input.ToLower())).ToList();
                 searchData.AddSearch(input);
             }
-            return View("ShowAllUsers", new { users = users, searches = (List<string>)searches });
+            UsersViewModel viewModel = new UsersViewModel();
+            viewModel.Users = users;
+            viewModel.Searches = (List<string>)searches;
+            return View("ShowAllUsers", viewModel);
         }
     }
 }

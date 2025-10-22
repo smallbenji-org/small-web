@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model SmallEnergy.Models.UsersViewModel;
 @{
 	ViewData["Title"] = "All Users";
 }
@@ -20,7 +20,7 @@
 					<input type="text" class="input" name="input" list="predefinedSearches" placeholder="search for username..." />
 
 					<datalist id="predefinedSearches">
-						@foreach (string option in Model.searches)
+						@foreach (string option in Model.Searches)
 						{
 							<option value="@option"></option>
 						}
@@ -47,7 +47,7 @@
 				<th>Kind</th>
 				<th colspan="3">Actions</th>
 			</tr>
-			@foreach (var user in Model.users)
+			@foreach (var user in Model.Users)
 			{
 				<tr>
 					<td>@user.Id</td>
@@ -82,3 +82,15 @@
 		</table>
 	</div>
 </div>
+
+<ul class="pagination">
+	<li><a asp-action="ShowAllUsers" asp-controller="User" asp-route-id="1">&laquo;</a></li>
+	@for (int i = Model.Pagination.CurrentPage; i < Model.Pagination.CurrentPage + 5; i++)
+	{
+		int pageNum = i;
+		if (Model.Pagination.CurrentPage > 1) { pageNum--; }
+		if (pageNum > Model.Pagination.maxPages) { break; }
+		<li><a asp-action="ShowAllUsers" asp-controller="User" asp-route-id="@pageNum">@pageNum</a></li>
+	}
+	<li><a asp-action="ShowAllUsers" asp-controller="User" asp-route-id="@Model.Pagination.maxPages">&raquo;</a></li>
+</ul>

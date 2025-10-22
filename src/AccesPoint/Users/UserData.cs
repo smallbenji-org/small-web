@@ -28,7 +28,7 @@ namespace AccesPoint.Users
 
         public Task<User> GetUser(int id) => _db.LoadData<User, dynamic>("EXEC [dbo].[dspGetUmbracoUser] @Id", new {Id = id}, "DefaultConnection").ContinueWith(t => t.Result.FirstOrDefault());
 
-        public Task<IEnumerable<User>> GetUsers(int top) => _db.LoadData<User, dynamic>("EXEC [dbo].[dspGetAllUmbracoUsers] @top", new { top = top }, "DefaultConnection");
+        public Task<IEnumerable<User>> GetUsers() => _db.LoadData<User, dynamic>("EXEC [dbo].[dspGetAllUmbracoUsers]", null, "DefaultConnection");
 
         public Task UpdateMember(User user) => _db.SaveData("EXEC [dbo].[dspUpdateUmbracoUser] @id, @userDisabled, @userName, @userLogin, @userPassword, @kind, @avatarBinary", user, "DefaultConnection");
     }
