@@ -73,7 +73,7 @@ namespace SmallEnergy.Controllers
         {
             var user = await userData.GetUser(id);
             if (user?.avatarBinary == null || user.avatarBinary.Length == 0)
-                return File("~/images/default-avatar.png", "image/png");
+                return File("~/images/avatar-placeholder.gif", "image/gif");
 
             string contentType = "image/jpeg"; 
             
