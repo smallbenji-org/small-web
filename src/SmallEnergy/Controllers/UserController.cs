@@ -124,7 +124,7 @@ namespace SmallEnergy.Controllers
                     user.avatarBinary = existingUser.avatarBinary;
                 }
             }
-           
+
             if (originalUser.userPassword != user.userPassword)
             {
                 user.userPassword = userManager.PasswordHasher.HashPassword(user, user.userPassword);
