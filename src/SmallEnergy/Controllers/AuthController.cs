@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using AccesPoint.Inferfaces;
 using AccesPoint.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SmallEnergy.Controllers
 {
@@ -8,11 +9,12 @@ namespace SmallEnergy.Controllers
     {
         private readonly SignInManager<User> signInManager;
         private readonly UserManager<User> userManager;
-
-        public AuthController(SignInManager<User> signInManager, UserManager<User> userManager)
+        private readonly ISqlDataAccess db;
+        public AuthController(SignInManager<User> signInManager, UserManager<User> userManager, ISqlDataAccess db)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
+            this.db = db;
         }
         public IActionResult Index()
         {
@@ -31,6 +33,8 @@ namespace SmallEnergy.Controllers
                 logInViewModel.failedText = "Failed! Make sure password or name is correct.";
                 return View("Index", logInViewModel);
             }
+
+            await db.SaveData("EXEC dbo.dspSetLastLoginDate @username", new { username = username }, "DefaultConnection");
             return RedirectToAction("Index");
         }
 
