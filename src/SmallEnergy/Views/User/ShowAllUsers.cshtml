@@ -25,9 +25,7 @@
 				</form>
 			</div>
 			<div class="card-content-table-actions-group">
-				<form asp-controller="User" asp-action="CreateUser" method="post">
-					<button class="button success">Create new user</button>
-				</form>
+				<a class="button success" asp-controller="User" asp-action="CreateUser">Create new user</a>
 			</div>
 		</div>
 		@if (Model.Users.Count() > 0)
@@ -57,16 +55,10 @@
 						<td>@user.kind</td>
 
 						<td>
-							<form asp-controller="User" asp-action="EditUser" asp-route-id="@user.Id">
-								<input type="hidden" name="Id" value="@user.Id" />
-								<button class="button success">Edit</button>
-							</form>
+							<a class="button success" asp-controller="User" asp-action="EditUser" asp-route-id="@user.Id">Edit</a>
 						</td>
 						<td>
-							<form asp-controller="User" asp-action="Details" asp-route-id="@user.Id">
-								<input type="hidden" name="Id" value="@user.Id" />
-								<button class="button primary">Details</button>
-							</form>
+							<a class="button primary" asp-controller="User" asp-action="Details" asp-route-id="@user.Id">Details</a>
 						</td>
 						<td>
 							<form asp-controller="User" asp-action="DeleteMember" method="post">
