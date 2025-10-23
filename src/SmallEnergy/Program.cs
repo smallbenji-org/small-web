@@ -68,6 +68,8 @@ namespace SmallEnergy
             
                 await next();
             });
+
+            context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
             // app.UseHttpsRedirection();
 
             app.UseRouting();
