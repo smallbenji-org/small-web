@@ -128,6 +128,7 @@ namespace SmallEnergy.Controllers
             if (originalUser.userPassword != user.userPassword)
             {
                 user.userPassword = userManager.PasswordHasher.HashPassword(user, user.userPassword);
+                user.lastPasswordChangeDate = DateTime.UtcNow;
             }
 
             await userData.UpdateMember(user);
