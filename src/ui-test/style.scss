@@ -1,0 +1,198 @@
+:root {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    --border: 1px solid rgba(0, 0, 0, 0.1);
+    --card-border: 1px solid rgba(0, 0, 0, 0.3);
+    --card-header-color: rgba(0, 0, 0, 0.2);
+    --table-header-color: rgba(0, 0, 0, 0.1);
+    --table-secondary-bg-color: rgba(0, 0, 0, 0.05);
+}
+
+.card {
+    border: var(--card-border);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    &:last-child {
+        margin-bottom: 1rem;
+    }
+
+    &:has(&-content-form) {
+        width: 24rem;
+    }
+
+    &-header {
+        font-size: 1.25rem;
+        font-weight: 600;
+        padding: 0.5rem;
+        border-bottom: var(--border);
+        background-color: var(--card-header-color);
+    }
+
+    &-content {
+
+        padding: 10px;
+
+        &:has(table) {
+            padding: 0px;
+        }
+
+        &:has(&-left):has(&-right) {
+            display: flex;
+        }
+
+        div:has(label) {
+            label {
+                font-weight: 600;
+            }
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-left {
+            p {
+                margin: 0;
+            }
+
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+
+            &:has(div,label) {
+                padding-right: 10px;
+            }
+        }
+
+        &-right {
+            img {
+                object-fit: cover;
+                aspect-ratio: 1/1;
+                width: 15vw;
+                min-width: 200px;
+                max-width: 250px;
+                border-radius: 5px;
+                box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+                margin: auto;
+                border: var(--border);
+            }
+        }
+
+        &-table-actions {
+            // padding: 10px;
+            border-bottom: var(--border);
+            display: flex;
+
+            &-group {
+                display: flex;
+                gap: 5px;
+                padding: 0.75rem 1rem;
+                padding-right: 1rem;
+                height: 100%;
+                border-right: var(--border);
+                &:last-child {
+                    border-right: none;
+                }
+
+                form {
+                    display: flex;
+                    gap: 5px;
+                }
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            tr {
+                &:nth-child(even) {
+                    background-color: var(--table-secondary-bg-color);
+                }
+
+                &:last-child {
+                    border-bottom: 0;
+                }
+                border-bottom: var(--border);
+            }
+            td,th {
+                border-right: var(--border);
+                padding: 0.35rem; 
+                text-align: left;
+                &:last-child {
+                    border-right: none;
+                }
+            }
+            th {
+                background-color: var(--table-header-color);
+            }
+        }
+
+        &-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+
+    &-actions {
+        padding: 0.75rem;
+        border-top: var(--border);
+        display: flex;
+        justify-content: end;
+        gap: 10px;
+    }
+}
+
+.button {
+    font-family: inherit;
+    border: var(--border);
+    padding: 0.15rem 0.5rem;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+
+    padding: 0.4rem 0.9rem;
+    font-size: 0.95rem;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    cursor: pointer;
+
+    &:link,
+    &:visited {
+        color: inherit;
+    }
+    
+    &.primary {
+        background-color: lightblue;
+        color: black;
+    }
+
+    &.success {
+        background-color: green;
+        color: white;
+    }
+
+    &.warning {
+        background-color: orange;
+    }
+
+    &.danger {
+        background-color: red;
+        color: white;
+    }
+}
+
+.input {
+    border-radius: 6px;
+    border: var(--card-border);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    font-size: 15px;
+    padding: 0.25rem;
+}
